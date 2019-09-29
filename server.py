@@ -20,7 +20,7 @@ def serve():
     rpc_pb2_grpc.add_ToolsServicer_to_server(Tools(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
-    _LOGGER.info("darwinia tools server start :50051")
+    _LOGGER.info("subscan tools server start :50051")
     try:
         while True:
             time.sleep(_ONE_DAY_IN_SECONDS)
@@ -29,6 +29,7 @@ def serve():
 
 
 def type_registry():
+    RuntimeConfiguration().update_type_registry(load_type_registry("default"))
     if os.getenv("NETWORK_NODE") == "kusama":
         RuntimeConfiguration().update_type_registry(load_type_registry("kusama"))
 
