@@ -15,25 +15,25 @@ class ToolsStub(object):
       channel: A grpc.Channel.
     """
     self.DecodeExtrinsic = channel.unary_unary(
-        '/darwinia_protos.Tools/DecodeExtrinsic',
+        '/codec_protos.Tools/DecodeExtrinsic',
         request_serializer=rpc__pb2.ExtrinsicRequest.SerializeToString,
         response_deserializer=rpc__pb2.ExtrinsicReply.FromString,
         )
     self.DecodeEvent = channel.unary_unary(
-        '/darwinia_protos.Tools/DecodeEvent',
+        '/codec_protos.Tools/DecodeEvent',
         request_serializer=rpc__pb2.EventRequest.SerializeToString,
         response_deserializer=rpc__pb2.EventReply.FromString,
         )
     self.DecodeLog = channel.unary_unary(
-        '/darwinia_protos.Tools/DecodeLog',
+        '/codec_protos.Tools/DecodeLog',
         request_serializer=rpc__pb2.LogRequest.SerializeToString,
         response_deserializer=rpc__pb2.LogReply.FromString,
         )
     self.DecodeStorage = channel.unary_unary(
-        '/darwinia_protos.Tools/DecodeStorage',
+        '/codec_protos.Tools/DecodeStorage',
         request_serializer=rpc__pb2.StorageRequest.SerializeToString,
         response_deserializer=rpc__pb2.StorageReply.FromString,
-    )
+        )
 
 
 class ToolsServicer(object):
@@ -62,11 +62,11 @@ class ToolsServicer(object):
     raise NotImplementedError('Method not implemented!')
 
   def DecodeStorage(self, request, context):
-      # missing associated documentation comment in .proto file
-      pass
-      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-      context.set_details('Method not implemented!')
-      raise NotImplementedError('Method not implemented!')
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
 
 
 def add_ToolsServicer_to_server(servicer, server):
@@ -93,5 +93,5 @@ def add_ToolsServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'darwinia_protos.Tools', rpc_method_handlers)
+      'codec_protos.Tools', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

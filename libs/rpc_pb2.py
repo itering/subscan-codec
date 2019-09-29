@@ -17,11 +17,10 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rpc.proto',
-  package='darwinia_protos',
+  package='codec_protos',
   syntax='proto3',
   serialized_options=None,
-    serialized_pb=_b(
-        '\n\trpc.proto\x12\x0f\x64\x61rwinia_protos\"<\n\x10\x45xtrinsicRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"!\n\x0e\x45xtrinsicReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"8\n\x0c\x45ventRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1d\n\nEventReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"6\n\nLogRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1b\n\x08LogReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"6\n\x0eStorageRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65\x63oderType\x18\x02 \x01(\t\"\x1f\n\x0cStorageReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\xc7\x02\n\x05Tools\x12W\n\x0f\x44\x65\x63odeExtrinsic\x12!.darwinia_protos.ExtrinsicRequest\x1a\x1f.darwinia_protos.ExtrinsicReply\"\x00\x12K\n\x0b\x44\x65\x63odeEvent\x12\x1d.darwinia_protos.EventRequest\x1a\x1b.darwinia_protos.EventReply\"\x00\x12\x45\n\tDecodeLog\x12\x1b.darwinia_protos.LogRequest\x1a\x19.darwinia_protos.LogReply\"\x00\x12Q\n\rDecodeStorage\x12\x1f.darwinia_protos.StorageRequest\x1a\x1d.darwinia_protos.StorageReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\trpc.proto\x12\x0c\x63odec_protos\"<\n\x10\x45xtrinsicRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"!\n\x0e\x45xtrinsicReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"8\n\x0c\x45ventRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1d\n\nEventReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"6\n\nLogRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1b\n\x08LogReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"6\n\x0eStorageRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65\x63oderType\x18\x02 \x01(\t\"\x1f\n\x0cStorageReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\xaf\x02\n\x05Tools\x12Q\n\x0f\x44\x65\x63odeExtrinsic\x12\x1e.codec_protos.ExtrinsicRequest\x1a\x1c.codec_protos.ExtrinsicReply\"\x00\x12\x45\n\x0b\x44\x65\x63odeEvent\x12\x1a.codec_protos.EventRequest\x1a\x18.codec_protos.EventReply\"\x00\x12?\n\tDecodeLog\x12\x18.codec_protos.LogRequest\x1a\x16.codec_protos.LogReply\"\x00\x12K\n\rDecodeStorage\x12\x1c.codec_protos.StorageRequest\x1a\x1a.codec_protos.StorageReply\"\x00\x62\x06proto3')
 )
 
 
@@ -29,20 +28,20 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _EXTRINSICREQUEST = _descriptor.Descriptor(
   name='ExtrinsicRequest',
-  full_name='darwinia_protos.ExtrinsicRequest',
+  full_name='codec_protos.ExtrinsicRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='darwinia_protos.ExtrinsicRequest.message', index=0,
+      name='message', full_name='codec_protos.ExtrinsicRequest.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='metadataVersion', full_name='darwinia_protos.ExtrinsicRequest.metadataVersion', index=1,
+      name='metadataVersion', full_name='codec_protos.ExtrinsicRequest.metadataVersion', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -60,20 +59,20 @@ _EXTRINSICREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30,
-  serialized_end=90,
+  serialized_start=27,
+  serialized_end=87,
 )
 
 
 _EXTRINSICREPLY = _descriptor.Descriptor(
   name='ExtrinsicReply',
-  full_name='darwinia_protos.ExtrinsicReply',
+  full_name='codec_protos.ExtrinsicReply',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='darwinia_protos.ExtrinsicReply.message', index=0,
+      name='message', full_name='codec_protos.ExtrinsicReply.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -91,27 +90,27 @@ _EXTRINSICREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=92,
-  serialized_end=125,
+  serialized_start=89,
+  serialized_end=122,
 )
 
 
 _EVENTREQUEST = _descriptor.Descriptor(
   name='EventRequest',
-  full_name='darwinia_protos.EventRequest',
+  full_name='codec_protos.EventRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='darwinia_protos.EventRequest.message', index=0,
+      name='message', full_name='codec_protos.EventRequest.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='metadataVersion', full_name='darwinia_protos.EventRequest.metadataVersion', index=1,
+      name='metadataVersion', full_name='codec_protos.EventRequest.metadataVersion', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -129,20 +128,20 @@ _EVENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=127,
-  serialized_end=183,
+  serialized_start=124,
+  serialized_end=180,
 )
 
 
 _EVENTREPLY = _descriptor.Descriptor(
   name='EventReply',
-  full_name='darwinia_protos.EventReply',
+  full_name='codec_protos.EventReply',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='darwinia_protos.EventReply.message', index=0,
+      name='message', full_name='codec_protos.EventReply.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -160,27 +159,27 @@ _EVENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=185,
-  serialized_end=214,
+  serialized_start=182,
+  serialized_end=211,
 )
 
 
 _LOGREQUEST = _descriptor.Descriptor(
   name='LogRequest',
-  full_name='darwinia_protos.LogRequest',
+  full_name='codec_protos.LogRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='darwinia_protos.LogRequest.message', index=0,
+      name='message', full_name='codec_protos.LogRequest.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='metadataVersion', full_name='darwinia_protos.LogRequest.metadataVersion', index=1,
+      name='metadataVersion', full_name='codec_protos.LogRequest.metadataVersion', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -198,20 +197,20 @@ _LOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=216,
-  serialized_end=270,
+  serialized_start=213,
+  serialized_end=267,
 )
 
 
 _LOGREPLY = _descriptor.Descriptor(
   name='LogReply',
-  full_name='darwinia_protos.LogReply',
+  full_name='codec_protos.LogReply',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='darwinia_protos.LogReply.message', index=0,
+      name='message', full_name='codec_protos.LogReply.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -229,75 +228,77 @@ _LOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=272,
-  serialized_end=299,
+  serialized_start=269,
+  serialized_end=296,
 )
+
 
 _STORAGEREQUEST = _descriptor.Descriptor(
-    name='StorageRequest',
-    full_name='darwinia_protos.StorageRequest',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='message', full_name='darwinia_protos.StorageRequest.message', index=0,
-            number=1, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=_b("").decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='decoderType', full_name='darwinia_protos.StorageRequest.decoderType', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=_b("").decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=301,
-    serialized_end=355,
+  name='StorageRequest',
+  full_name='codec_protos.StorageRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='codec_protos.StorageRequest.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='decoderType', full_name='codec_protos.StorageRequest.decoderType', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=298,
+  serialized_end=352,
 )
 
+
 _STORAGEREPLY = _descriptor.Descriptor(
-    name='StorageReply',
-    full_name='darwinia_protos.StorageReply',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='message', full_name='darwinia_protos.StorageReply.message', index=0,
-            number=1, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=_b("").decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=357,
-    serialized_end=388,
+  name='StorageReply',
+  full_name='codec_protos.StorageReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='codec_protos.StorageReply.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=354,
+  serialized_end=385,
 )
 
 DESCRIPTOR.message_types_by_name['ExtrinsicRequest'] = _EXTRINSICREQUEST
@@ -313,73 +314,73 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 ExtrinsicRequest = _reflection.GeneratedProtocolMessageType('ExtrinsicRequest', (_message.Message,), dict(
   DESCRIPTOR = _EXTRINSICREQUEST,
   __module__ = 'rpc_pb2'
-  # @@protoc_insertion_point(class_scope:darwinia_protos.ExtrinsicRequest)
+  # @@protoc_insertion_point(class_scope:codec_protos.ExtrinsicRequest)
   ))
 _sym_db.RegisterMessage(ExtrinsicRequest)
 
 ExtrinsicReply = _reflection.GeneratedProtocolMessageType('ExtrinsicReply', (_message.Message,), dict(
   DESCRIPTOR = _EXTRINSICREPLY,
   __module__ = 'rpc_pb2'
-  # @@protoc_insertion_point(class_scope:darwinia_protos.ExtrinsicReply)
+  # @@protoc_insertion_point(class_scope:codec_protos.ExtrinsicReply)
   ))
 _sym_db.RegisterMessage(ExtrinsicReply)
 
 EventRequest = _reflection.GeneratedProtocolMessageType('EventRequest', (_message.Message,), dict(
   DESCRIPTOR = _EVENTREQUEST,
   __module__ = 'rpc_pb2'
-  # @@protoc_insertion_point(class_scope:darwinia_protos.EventRequest)
+  # @@protoc_insertion_point(class_scope:codec_protos.EventRequest)
   ))
 _sym_db.RegisterMessage(EventRequest)
 
 EventReply = _reflection.GeneratedProtocolMessageType('EventReply', (_message.Message,), dict(
   DESCRIPTOR = _EVENTREPLY,
   __module__ = 'rpc_pb2'
-  # @@protoc_insertion_point(class_scope:darwinia_protos.EventReply)
+  # @@protoc_insertion_point(class_scope:codec_protos.EventReply)
   ))
 _sym_db.RegisterMessage(EventReply)
 
 LogRequest = _reflection.GeneratedProtocolMessageType('LogRequest', (_message.Message,), dict(
   DESCRIPTOR = _LOGREQUEST,
   __module__ = 'rpc_pb2'
-  # @@protoc_insertion_point(class_scope:darwinia_protos.LogRequest)
+  # @@protoc_insertion_point(class_scope:codec_protos.LogRequest)
   ))
 _sym_db.RegisterMessage(LogRequest)
 
 LogReply = _reflection.GeneratedProtocolMessageType('LogReply', (_message.Message,), dict(
   DESCRIPTOR = _LOGREPLY,
   __module__ = 'rpc_pb2'
-  # @@protoc_insertion_point(class_scope:darwinia_protos.LogReply)
+  # @@protoc_insertion_point(class_scope:codec_protos.LogReply)
   ))
 _sym_db.RegisterMessage(LogReply)
 
 StorageRequest = _reflection.GeneratedProtocolMessageType('StorageRequest', (_message.Message,), dict(
-    DESCRIPTOR=_STORAGEREQUEST,
-    __module__='rpc_pb2'
-    # @@protoc_insertion_point(class_scope:darwinia_protos.StorageRequest)
-))
+  DESCRIPTOR = _STORAGEREQUEST,
+  __module__ = 'rpc_pb2'
+  # @@protoc_insertion_point(class_scope:codec_protos.StorageRequest)
+  ))
 _sym_db.RegisterMessage(StorageRequest)
 
 StorageReply = _reflection.GeneratedProtocolMessageType('StorageReply', (_message.Message,), dict(
-    DESCRIPTOR=_STORAGEREPLY,
-    __module__='rpc_pb2'
-    # @@protoc_insertion_point(class_scope:darwinia_protos.StorageReply)
-))
+  DESCRIPTOR = _STORAGEREPLY,
+  __module__ = 'rpc_pb2'
+  # @@protoc_insertion_point(class_scope:codec_protos.StorageReply)
+  ))
 _sym_db.RegisterMessage(StorageReply)
 
 
 
 _TOOLS = _descriptor.ServiceDescriptor(
   name='Tools',
-  full_name='darwinia_protos.Tools',
+  full_name='codec_protos.Tools',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-    serialized_start=391,
-    serialized_end=718,
+  serialized_start=388,
+  serialized_end=691,
   methods=[
   _descriptor.MethodDescriptor(
     name='DecodeExtrinsic',
-    full_name='darwinia_protos.Tools.DecodeExtrinsic',
+    full_name='codec_protos.Tools.DecodeExtrinsic',
     index=0,
     containing_service=None,
     input_type=_EXTRINSICREQUEST,
@@ -388,7 +389,7 @@ _TOOLS = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='DecodeEvent',
-    full_name='darwinia_protos.Tools.DecodeEvent',
+    full_name='codec_protos.Tools.DecodeEvent',
     index=1,
     containing_service=None,
     input_type=_EVENTREQUEST,
@@ -397,21 +398,21 @@ _TOOLS = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='DecodeLog',
-    full_name='darwinia_protos.Tools.DecodeLog',
+    full_name='codec_protos.Tools.DecodeLog',
     index=2,
     containing_service=None,
     input_type=_LOGREQUEST,
     output_type=_LOGREPLY,
     serialized_options=None,
   ),
-      _descriptor.MethodDescriptor(
-          name='DecodeStorage',
-          full_name='darwinia_protos.Tools.DecodeStorage',
-          index=3,
-          containing_service=None,
-          input_type=_STORAGEREQUEST,
-          output_type=_STORAGEREPLY,
-          serialized_options=None,
+  _descriptor.MethodDescriptor(
+    name='DecodeStorage',
+    full_name='codec_protos.Tools.DecodeStorage',
+    index=3,
+    containing_service=None,
+    input_type=_STORAGEREQUEST,
+    output_type=_STORAGEREPLY,
+    serialized_options=None,
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_TOOLS)

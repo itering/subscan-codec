@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package darwinia_protos;
+package codec_protos;
 
 service Tools {
     rpc DecodeExtrinsic (ExtrinsicRequest) returns (ExtrinsicReply) {
