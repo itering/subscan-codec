@@ -32,6 +32,8 @@ def type_registry():
     RuntimeConfiguration().update_type_registry(load_type_registry("default"))
     if os.getenv("NETWORK_NODE") == "kusama":
         RuntimeConfiguration().update_type_registry(load_type_registry("kusama"))
+    elif os.getenv("NETWORK_NODE") == "darwinia":
+        RuntimeConfiguration().update_type_registry(load_type_registry("darwinia"))
 
 
 def log_config():
