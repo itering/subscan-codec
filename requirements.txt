@@ -1,0 +1,3 @@
+grpcio==1.20.1
+grpcio-tools==1.20.1
+git+https://github.com/freehere107/py-scale-codec.git@master#egg=scalecodec

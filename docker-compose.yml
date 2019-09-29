@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  darwinia-tools:
+    build: .
+    image: scan/codec_grpc
+    environment:
+      NETWORK_NODE: 'darwinia'
+    networks:
+      - app_net
+  kusama-tools:
+    image: scan/codec_grpc
+    environment:
+      NETWORK_NODE: 'kusama'
+    networks:
+      - app_net
+networks:
+  app_net:
+    external: true
