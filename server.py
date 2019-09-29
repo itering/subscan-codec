@@ -44,5 +44,6 @@ def log_config():
 
 
 if __name__ == '__main__':
+    log_config()
     type_registry()
     serve()
