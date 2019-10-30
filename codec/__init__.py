@@ -61,7 +61,10 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
 
     def DecodeExtrinsic(self, request, context):
         msg = json.loads(request.message)
-        m = self.MetadataDecoderInstantMap[request.metadataVersion]
+        metadata_version = request.metadataVersion
+        while metadata_version not in self.MetadataDecoderInstantMap:
+            metadata_version -= 1
+        m = self.MetadataDecoderInstantMap[metadata_version]
         result = []
         for idx, extrinsic_data in enumerate(msg):
             extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=m.Decoder)
@@ -70,16 +73,18 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
 
     def DecodeEvent(self, request, context):
         event = request.message
-        m = self.MetadataDecoderInstantMap[request.metadataVersion]
+        metadata_version = request.metadataVersion
+        while metadata_version not in self.MetadataDecoderInstantMap:
+            metadata_version -= 1
+        m = self.MetadataDecoderInstantMap[metadata_version]
         events_decoder = EventsDecoder(data=ScaleBytes(event), metadata=m.Decoder)
         return rpc_pb2.EventReply(message=json.dumps(events_decoder.decode(False)))
 
     def DecodeLog(self, request, context):
         logs = json.loads(request.message)
-        m = self.MetadataDecoderInstantMap[request.metadataVersion]
         result = []
         for idx, log in enumerate(logs):
-            log_decoder = LogDigest(data=ScaleBytes(log), metadata=m.Decoder)
+            log_decoder = LogDigest(data=ScaleBytes(log))
             result.append(log_decoder.decode(False))
         return rpc_pb2.ExtrinsicReply(message=json.dumps(result))
 
