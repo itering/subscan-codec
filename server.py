@@ -7,7 +7,7 @@ from concurrent import futures
 import grpc
 from scalecodec.base import RuntimeConfiguration
 
-from codec import Tools
+from codec.tools import Tools
 from libs import rpc_pb2_grpc
 from type_registry import load_type_registry
 
@@ -20,7 +20,7 @@ def serve():
     rpc_pb2_grpc.add_ToolsServicer_to_server(Tools(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
-    _LOGGER.info("subscan tools server start :50051")
+    _LOGGER.info("SubScan Tools server start :50051")
     try:
         while True:
             time.sleep(_ONE_DAY_IN_SECONDS)
