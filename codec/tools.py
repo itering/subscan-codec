@@ -6,7 +6,8 @@ from scalecodec.block import ExtrinsicsDecoder, EventsDecoder, LogDigest
 
 from libs import rpc_pb2, rpc_pb2_grpc
 from codec import MetadataV6Instant, MetadataKusamaInstant, MetadataKusama1006Instant, \
-    MetadataKusama1008Instant, MetadataKusama1010Instant, MetadataKusama1011Instant, MetadataKusama1012Instant
+    MetadataKusama1008Instant, MetadataKusama1010Instant, MetadataKusama1011Instant, MetadataKusama1012Instant, \
+    MetadataKusama1015Instant, MetadataKusama1016Instant
 
 
 class Tools(rpc_pb2_grpc.ToolsServicer):
@@ -18,6 +19,8 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         1010: MetadataKusama1010Instant(),
         1011: MetadataKusama1011Instant(),
         1012: MetadataKusama1012Instant(),
+        1015: MetadataKusama1015Instant(),
+        1016: MetadataKusama1016Instant(),
     }
 
     def DecodeExtrinsic(self, request, context):
