@@ -35,6 +35,22 @@
     "SessionIndex": "U32",
     "AuctionIndex": "U32",
     "AuthIndex": "U32",
+    "AuthorityIndex": "u64",
+    "AuthorityWeight": "u64",
+    "NextAuthority": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "AuthorityId",
+          "AuthorityId"
+        ],
+        [
+          "weight",
+          "AuthorityWeight"
+        ]
+      ]
+    },
+    "AuthorityList": "VecNextAuthority",
     "BalanceUpload": "(AccountId, u64)",
     "EgressQueueRoot": "(ParaId, Hash)",
     "EventIndex": "u32",
