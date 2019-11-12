@@ -8,6 +8,10 @@ from logger.conf import info
 from libs import rpc_pb2, rpc_pb2_grpc
 
 
+class InvalidMetadataSpec(Exception):
+    pass
+
+
 class MetadataRegistry(metaclass=Singleton):
     registry = {}
     network = os.getenv("NETWORK_NODE", "darwinia")
@@ -35,10 +39,10 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
 
     def DecodeExtrinsic(self, request, context):
         info("DecodeExtrinsic", (request.message, str(request.metadataVersion)))
-        msg = json.loads(request.message)
         spec_ver = request.metadataVersion
-        while MetadataRegistry.has_reg(spec_ver) is False:
-            spec_ver -= 1
+        if MetadataRegistry.has_reg(spec_ver) is False:
+            raise InvalidMetadataSpec
+        msg = json.loads(request.message)
         t = MetadataRegistry.get_class_decoder(spec_ver)
         result = []
         for idx, extrinsic_data in enumerate(msg):
@@ -48,10 +52,10 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
 
     def DecodeEvent(self, request, context):
         info('DecodeEvent', (request.message, str(request.metadataVersion)))
-        event = request.message
         spec_ver = request.metadataVersion
-        while MetadataRegistry.has_reg(spec_ver) is False:
-            spec_ver -= 1
+        if MetadataRegistry.has_reg(spec_ver) is False:
+            raise InvalidMetadataSpec
+        event = request.message
         t = MetadataRegistry.get_class_decoder(spec_ver)
         events_decoder = EventsDecoder(data=ScaleBytes(event), metadata=t)
         return rpc_pb2.EventReply(message=json.dumps(events_decoder.decode(False)))
