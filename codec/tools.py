@@ -4,7 +4,7 @@ from scalecodec import ScaleBytes
 from scalecodec.base import ScaleDecoder, Singleton
 from scalecodec.block import ExtrinsicsDecoder, EventsDecoder, LogDigest
 from codec import MetadataInstant
-
+from logger.conf import info
 from libs import rpc_pb2, rpc_pb2_grpc
 
 
@@ -34,6 +34,7 @@ class MetadataRegistry(metaclass=Singleton):
 class Tools(rpc_pb2_grpc.ToolsServicer):
 
     def DecodeExtrinsic(self, request, context):
+        info("DecodeExtrinsic", (request.message, str(request.metadataVersion)))
         msg = json.loads(request.message)
         spec_ver = request.metadataVersion
         while MetadataRegistry.has_reg(spec_ver) is False:
@@ -46,6 +47,7 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         return rpc_pb2.ExtrinsicReply(message=json.dumps(result))
 
     def DecodeEvent(self, request, context):
+        info('DecodeEvent', (request.message, str(request.metadataVersion)))
         event = request.message
         spec_ver = request.metadataVersion
         while MetadataRegistry.has_reg(spec_ver) is False:
@@ -56,6 +58,7 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
 
     def DecodeLog(self, request, context):
         logs = json.loads(request.message)
+        info('DecodeLog', logs[0])
         result = []
         for idx, log in enumerate(logs):
             log_decoder = LogDigest(data=ScaleBytes(log))
@@ -63,6 +66,7 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         return rpc_pb2.ExtrinsicReply(message=json.dumps(result))
 
     def DecodeStorage(self, request, context):
+        info('DecodeStorage', (request.message, request.decoderType))
         msg = request.message
         decoder_type = request.decoderType
         obj = ScaleDecoder.get_decoder_class(decoder_type, ScaleBytes(msg))

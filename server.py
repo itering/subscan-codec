@@ -1,6 +1,5 @@
-import logging
 import os
-import sys
+
 import time
 from concurrent import futures
 
@@ -10,9 +9,9 @@ from scalecodec.base import RuntimeConfiguration
 from codec.tools import Tools
 from libs import rpc_pb2_grpc
 from type_registry import load_type_registry
+from logger.conf import log_config, LOGGER
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-_LOGGER = logging.getLogger(__name__)
 
 
 def serve():
@@ -20,7 +19,7 @@ def serve():
     rpc_pb2_grpc.add_ToolsServicer_to_server(Tools(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
-    _LOGGER.info("SubScan Tools server start :50051")
+    LOGGER.info("SubScan Tools server start :50051")
     try:
         while True:
             time.sleep(_ONE_DAY_IN_SECONDS)
@@ -34,15 +33,6 @@ def type_registry():
         RuntimeConfiguration().update_type_registry(load_type_registry("kusama"))
     elif os.getenv("NETWORK_NODE") == "darwinia":
         RuntimeConfiguration().update_type_registry(load_type_registry("darwinia"))
-
-
-def log_config():
-    logging.basicConfig()
-    handler = logging.StreamHandler(sys.stdout)
-    formatter = logging.Formatter('[PID %(process)d] %(message)s')
-    handler.setFormatter(formatter)
-    _LOGGER.addHandler(handler)
-    _LOGGER.setLevel(logging.DEBUG)
 
 
 if __name__ == '__main__':
