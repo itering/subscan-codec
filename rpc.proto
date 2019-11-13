@@ -11,6 +11,8 @@ service Tools {
     }
     rpc DecodeStorage (StorageRequest) returns (StorageReply) {
     }
+    rpc RegMetadata (MetadataRequest) returns (MetadataReply) {
+    }
 
 }
 
@@ -48,4 +50,13 @@ message StorageRequest {
 
 message StorageReply {
     string message = 1;
+}
+
+message MetadataRequest {
+    string message = 1;
+    int32 metadataVersion = 2;
+}
+
+message MetadataReply {
+    bool message = 1;
 }

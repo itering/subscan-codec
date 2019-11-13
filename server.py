@@ -10,6 +10,7 @@ from codec.tools import Tools
 from libs import rpc_pb2_grpc
 from type_registry import load_type_registry
 from logger.conf import log_config, LOGGER
+from codec.tools import MetadataRegistry
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
@@ -28,11 +29,9 @@ def serve():
 
 
 def type_registry():
+    MetadataRegistry()
     RuntimeConfiguration().update_type_registry(load_type_registry("default"))
-    if os.getenv("NETWORK_NODE") == "kusama":
-        RuntimeConfiguration().update_type_registry(load_type_registry("kusama"))
-    elif os.getenv("NETWORK_NODE") == "darwinia":
-        RuntimeConfiguration().update_type_registry(load_type_registry("darwinia"))
+    RuntimeConfiguration().update_type_registry(load_type_registry(os.getenv("NETWORK_NODE", "darwinia")))
 
 
 if __name__ == '__main__':

@@ -34,6 +34,11 @@ class ToolsStub(object):
         request_serializer=rpc__pb2.StorageRequest.SerializeToString,
         response_deserializer=rpc__pb2.StorageReply.FromString,
         )
+    self.RegMetadata = channel.unary_unary(
+        '/codec_protos.Tools/RegMetadata',
+        request_serializer=rpc__pb2.MetadataRequest.SerializeToString,
+        response_deserializer=rpc__pb2.MetadataReply.FromString,
+        )
 
 
 class ToolsServicer(object):
@@ -68,6 +73,13 @@ class ToolsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def RegMetadata(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_ToolsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -90,6 +102,11 @@ def add_ToolsServicer_to_server(servicer, server):
           servicer.DecodeStorage,
           request_deserializer=rpc__pb2.StorageRequest.FromString,
           response_serializer=rpc__pb2.StorageReply.SerializeToString,
+      ),
+      'RegMetadata': grpc.unary_unary_rpc_method_handler(
+          servicer.RegMetadata,
+          request_deserializer=rpc__pb2.MetadataRequest.FromString,
+          response_serializer=rpc__pb2.MetadataReply.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
