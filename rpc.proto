@@ -23,6 +23,7 @@ message ExtrinsicRequest {
 
 message ExtrinsicReply {
     string message = 1;
+    bool error = 2;
 }
 
 message EventRequest {
@@ -32,6 +33,7 @@ message EventRequest {
 
 message EventReply {
     string message = 1;
+    bool error = 2;
 }
 
 message LogRequest {

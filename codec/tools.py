@@ -49,10 +49,14 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         msg = json.loads(request.message)
         t = MetadataRegistry.get_class_decoder(spec_ver)
         result = []
+        error = False
         for idx, extrinsic_data in enumerate(msg):
             extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=t)
-            result.append(extrinsic_decoder.decode(False))
-        return rpc_pb2.ExtrinsicReply(message=json.dumps(result))
+            try:
+                result.append(extrinsic_decoder.decode(False))
+            except IndexError:
+                error = True
+        return rpc_pb2.ExtrinsicReply(message=json.dumps(result), error=error)
 
     def DecodeEvent(self, request, context):
         info('DecodeEvent', (request.message, str(request.metadataVersion)))
@@ -62,7 +66,13 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         event = request.message
         t = MetadataRegistry().get_class_decoder(spec_ver)
         events_decoder = EventsDecoder(data=ScaleBytes(event), metadata=t)
-        return rpc_pb2.EventReply(message=json.dumps(events_decoder.decode(False)))
+        result = []
+        error = False
+        try:
+            result = events_decoder.decode(False)
+        except IndexError:
+            error = True
+        return rpc_pb2.EventReply(message=json.dumps(result), error=error)
 
     def DecodeLog(self, request, context):
         logs = json.loads(request.message)

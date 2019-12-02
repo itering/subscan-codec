@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='codec_protos',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\trpc.proto\x12\x0c\x63odec_protos\"<\n\x10\x45xtrinsicRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"!\n\x0e\x45xtrinsicReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"8\n\x0c\x45ventRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1d\n\nEventReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"6\n\nLogRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1b\n\x08LogReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"6\n\x0eStorageRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65\x63oderType\x18\x02 \x01(\t\"\x1f\n\x0cStorageReply\x12\x0f\n\x07message\x18\x01 \x01(\t\";\n\x0fMetadataRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\" \n\rMetadataReply\x12\x0f\n\x07message\x18\x01 \x01(\x08\x32\xfc\x02\n\x05Tools\x12Q\n\x0f\x44\x65\x63odeExtrinsic\x12\x1e.codec_protos.ExtrinsicRequest\x1a\x1c.codec_protos.ExtrinsicReply\"\x00\x12\x45\n\x0b\x44\x65\x63odeEvent\x12\x1a.codec_protos.EventRequest\x1a\x18.codec_protos.EventReply\"\x00\x12?\n\tDecodeLog\x12\x18.codec_protos.LogRequest\x1a\x16.codec_protos.LogReply\"\x00\x12K\n\rDecodeStorage\x12\x1c.codec_protos.StorageRequest\x1a\x1a.codec_protos.StorageReply\"\x00\x12K\n\x0bRegMetadata\x12\x1d.codec_protos.MetadataRequest\x1a\x1b.codec_protos.MetadataReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\trpc.proto\x12\x0c\x63odec_protos\"<\n\x10\x45xtrinsicRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"0\n\x0e\x45xtrinsicReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"8\n\x0c\x45ventRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\",\n\nEventReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"6\n\nLogRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1b\n\x08LogReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"6\n\x0eStorageRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65\x63oderType\x18\x02 \x01(\t\"\x1f\n\x0cStorageReply\x12\x0f\n\x07message\x18\x01 \x01(\t\";\n\x0fMetadataRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\" \n\rMetadataReply\x12\x0f\n\x07message\x18\x01 \x01(\x08\x32\xfc\x02\n\x05Tools\x12Q\n\x0f\x44\x65\x63odeExtrinsic\x12\x1e.codec_protos.ExtrinsicRequest\x1a\x1c.codec_protos.ExtrinsicReply\"\x00\x12\x45\n\x0b\x44\x65\x63odeEvent\x12\x1a.codec_protos.EventRequest\x1a\x18.codec_protos.EventReply\"\x00\x12?\n\tDecodeLog\x12\x18.codec_protos.LogRequest\x1a\x16.codec_protos.LogReply\"\x00\x12K\n\rDecodeStorage\x12\x1c.codec_protos.StorageRequest\x1a\x1a.codec_protos.StorageReply\"\x00\x12K\n\x0bRegMetadata\x12\x1d.codec_protos.MetadataRequest\x1a\x1b.codec_protos.MetadataReply\"\x00\x62\x06proto3')
 )
 
 
@@ -78,6 +78,13 @@ _EXTRINSICREPLY = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='codec_protos.ExtrinsicReply.error', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -91,7 +98,7 @@ _EXTRINSICREPLY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=89,
-  serialized_end=122,
+  serialized_end=137,
 )
 
 
@@ -128,8 +135,8 @@ _EVENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=124,
-  serialized_end=180,
+  serialized_start=139,
+  serialized_end=195,
 )
 
 
@@ -147,6 +154,13 @@ _EVENTREPLY = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='codec_protos.EventReply.error', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -159,8 +173,8 @@ _EVENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=182,
-  serialized_end=211,
+  serialized_start=197,
+  serialized_end=241,
 )
 
 
@@ -197,8 +211,8 @@ _LOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=213,
-  serialized_end=267,
+  serialized_start=243,
+  serialized_end=297,
 )
 
 
@@ -228,8 +242,8 @@ _LOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=269,
-  serialized_end=296,
+  serialized_start=299,
+  serialized_end=326,
 )
 
 
@@ -266,8 +280,8 @@ _STORAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=298,
-  serialized_end=352,
+  serialized_start=328,
+  serialized_end=382,
 )
 
 
@@ -297,8 +311,8 @@ _STORAGEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=354,
-  serialized_end=385,
+  serialized_start=384,
+  serialized_end=415,
 )
 
 
@@ -335,8 +349,8 @@ _METADATAREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=387,
-  serialized_end=446,
+  serialized_start=417,
+  serialized_end=476,
 )
 
 
@@ -366,8 +380,8 @@ _METADATAREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=448,
-  serialized_end=480,
+  serialized_start=478,
+  serialized_end=510,
 )
 
 DESCRIPTOR.message_types_by_name['ExtrinsicRequest'] = _EXTRINSICREQUEST
@@ -460,8 +474,8 @@ _TOOLS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=483,
-  serialized_end=863,
+  serialized_start=513,
+  serialized_end=893,
   methods=[
   _descriptor.MethodDescriptor(
     name='DecodeExtrinsic',
