@@ -14,6 +14,12 @@ services:
       NETWORK_NODE: 'kusama'
     networks:
       - app_net
+  icefrog-tools:
+    image: scan/codec_grpc
+    environment:
+      NETWORK_NODE: 'icefrog'
+    networks:
+      - app_net
 networks:
   app_net:
     external: true
