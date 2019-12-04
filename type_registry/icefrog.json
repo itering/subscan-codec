@@ -65,7 +65,6 @@
          ["number", "EthBlockNumber"],
          ["auth", "H160"],
          ["transaction_root", "H256"],
-         ["timestamp", "u64"],
          ["uncles_hash", "H256"],
          ["extra_data", "Bytes"],
          ["state_root", "H256"],
