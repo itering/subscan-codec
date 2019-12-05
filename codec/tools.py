@@ -36,7 +36,8 @@ class MetadataRegistry(metaclass=Singleton):
 
     @classmethod
     def reg_new_instant(cls, metadata, spec):
-        MetadataRegistry().registry["%s%s" % (MetadataRegistry.network, spec)] = MetadataInstant(metadata)
+        if "%s%s" % (MetadataRegistry.network, spec) not in MetadataRegistry().registry:
+            MetadataRegistry().registry["%s%s" % (MetadataRegistry.network, spec)] = MetadataInstant(metadata)
 
 
 class Tools(rpc_pb2_grpc.ToolsServicer):
