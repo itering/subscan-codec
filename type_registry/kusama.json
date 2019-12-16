@@ -11,6 +11,7 @@
          ["parachains", "AccountId"]
       ]
     },
-    "Keys": "SessionKeysPolkadot"
+    "Keys": "SessionKeysPolkadot",
+    "ValidatorPrefs,Linkage<AccountId>":"AccountId"
   }
 }

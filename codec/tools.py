@@ -45,17 +45,19 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
     def DecodeExtrinsic(self, request, context):
         info("DecodeExtrinsic", (request.message, str(request.metadataVersion)))
         spec_ver = request.metadataVersion
-        if MetadataRegistry().has_reg(spec_ver) is False:
-            raise InvalidMetadataSpec
         msg = json.loads(request.message)
-        t = MetadataRegistry.get_class_decoder(spec_ver)
+        if MetadataRegistry().has_reg(spec_ver) is False:
+            cl = MetadataRegistry().registry.get(sorted(MetadataRegistry().registry.keys())[-1], None)
+            t = cl.Decoder
+        else:
+            t = MetadataRegistry.get_class_decoder(spec_ver)
         result = []
         error = False
         for idx, extrinsic_data in enumerate(msg):
             extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=t)
             try:
                 result.append(extrinsic_decoder.decode(False))
-            except IndexError:
+            except:
                 error = True
         return rpc_pb2.ExtrinsicReply(message=json.dumps(result), error=error)
 
@@ -63,15 +65,17 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         info('DecodeEvent', (request.message, str(request.metadataVersion)))
         spec_ver = request.metadataVersion
         if MetadataRegistry().has_reg(spec_ver) is False:
-            raise InvalidMetadataSpec
+            cl = MetadataRegistry().registry.get(sorted(MetadataRegistry().registry.keys())[-1], None)
+            t = cl.Decoder
+        else:
+            t = MetadataRegistry.get_class_decoder(spec_ver)
         event = request.message
-        t = MetadataRegistry().get_class_decoder(spec_ver)
         events_decoder = EventsDecoder(data=ScaleBytes(event), metadata=t)
         result = []
         error = False
         try:
             result = events_decoder.decode(False)
-        except IndexError:
+        except:
             error = True
         return rpc_pb2.EventReply(message=json.dumps(result), error=error)
 
