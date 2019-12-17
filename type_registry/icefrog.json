@@ -23,6 +23,14 @@
          ["kton_staking_lock", "StakingLock"]
       ]
     },
+    "TimeDepositItem": {
+      "type": "struct",
+      "type_mapping": [
+         ["value", "Compact<Balance>"],
+         ["start_time", "Compact<Moment>"],
+         ["expire_time", "Compact<Moment>"]
+      ]
+    },
     "BalanceLock": {
       "type": "struct",
       "type_mapping": [
@@ -129,6 +137,13 @@
       "height": "EthBlockNumber",
       "hash": "H256",
       "total_difficulty": "U256"
+    },
+    "StakingBalances": {
+      "type": "enum",
+      "type_mapping": [
+        ["Ring", "Balance"],
+        ["Kton", "Balance"]
+      ]
     }
   }
 }
