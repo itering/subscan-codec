@@ -11,6 +11,12 @@
          ["parachains", "AccountId"]
       ]
     },
-    "Keys": "SessionKeysPolkadot"
+    "Keys": "SessionKeysPolkadot",
+    "ValidatorPrefs":{
+      "type": "struct",
+      "type_mapping": [
+        ["Commission","Compact<Balance>"]
+      ]
+    }
   }
 }
