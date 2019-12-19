@@ -61,7 +61,7 @@
       "type": "struct",
       "type_mapping": [
          ["staking_amount", "u128"],
-         ["unbondings", "NormalLock"]
+         ["unbondings", "Vec<NormalLock>"]
       ]
     },
     "EthHeader": {
