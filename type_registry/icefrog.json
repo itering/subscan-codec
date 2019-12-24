@@ -1,8 +1,12 @@
 {
   "default": {
+    "EpochDuration": "u64",
     "Bloom": "[u8; 256]",
     "TimeStamp": "u64",
     "EthBlockNumber": "u64",
+    "EthAddress": "H160",
+    "EthTransactionIndex": "(H256, u64)",
+    "EraIndex": "u32",
     "ValidatorPrefs": {
       "type": "struct",
       "type_mapping": [
@@ -91,28 +95,8 @@
           "NormalLock"
         ],
         [
-          "AuthoriWithStakingtiesChange",
+          "WithStaking",
           "StakingLock"
-        ],
-        [
-          "ChangesTrieRoot",
-          "Hash"
-        ],
-        [
-          "SealV0",
-          "SealV0"
-        ],
-        [
-          "Consensus",
-          "Consensus"
-        ],
-        [
-          "Seal",
-          "Seal"
-        ],
-        [
-          "PreRuntime",
-          "PreRuntime"
         ]
       ]
     },
@@ -207,7 +191,7 @@
         ]
       ]
     },
-    "ActionRecord": {
+    "EthReceiptProof": {
       "type": "struct",
       "type_mapping": [
         [
