@@ -346,13 +346,13 @@
           "Vec<NominatorReward>"
         ]
       ]
+    },
+    "RewardDestination": {
+      "type": "enum",
+      "value_list": [
+        "Stash",
+        "Controller"
+      ]
     }
-  },
-  "RewardDestination": {
-    "type": "enum",
-    "value_list": [
-      "Stash",
-      "Controller"
-    ]
   }
 }
