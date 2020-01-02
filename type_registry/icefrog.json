@@ -347,5 +347,12 @@
         ]
       ]
     }
+  },
+  "RewardDestination": {
+    "type": "enum",
+    "value_list": [
+      "Stash",
+      "Controller"
+    ]
   }
 }
