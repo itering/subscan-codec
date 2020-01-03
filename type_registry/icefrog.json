@@ -3,6 +3,8 @@
     "EpochDuration": "u64",
     "Bloom": "[u8; 256]",
     "TimeStamp": "u64",
+    "KtonBalance": "Balance",
+    "RingBalance": "Balance",
     "EthBlockNumber": "u64",
     "EthAddress": "H160",
     "EthTransactionIndex": "(H256, u64)",
