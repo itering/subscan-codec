@@ -17,6 +17,45 @@
       "type_mapping": [
         ["Commission","Compact<Balance>"]
       ]
+    },
+    "DispatchErrorModule": {
+      "type": "struct",
+      "type_mapping": [
+         ["index", "u8"],
+         ["error", "u8"]
+      ]
+    },
+    "DispatchError": {
+      "type": "enum",
+      "type_mapping": [
+        ["Other", "Null"],
+        ["CannotLookup", "Null"],
+        ["BadOrigin", "Null"],
+        ["Module", "DispatchErrorModule"]
+      ]
+    },
+    "DispatchResult": {
+      "type": "enum",
+      "type_mapping": [
+        ["Error", "DispatchError"],
+        ["Ok", "Null"]
+      ]
+    },
+    "Timepoint": {
+      "type": "struct",
+      "type_mapping": [
+         ["height", "BlockNumber"],
+         ["index", "u32"]
+        ]
+    },
+    "Multisig": {
+      "type": "struct",
+      "type_mapping": [
+         ["when", "Timepoint"],
+         ["deposit", "Balance"],
+        ["depositor", "AccountId"],
+         ["approvals", "Vec<AccountId>"]
+      ]
     }
   }
 }

@@ -31,7 +31,7 @@ def serve():
 def type_registry():
     MetadataRegistry()
     RuntimeConfiguration().update_type_registry(load_type_registry("default"))
-    RuntimeConfiguration().update_type_registry(load_type_registry(os.getenv("NETWORK_NODE", "darwinia")))
+    RuntimeConfiguration().update_type_registry(load_type_registry(os.getenv("NETWORK_NODE", "icefrog")))
 
 
 if __name__ == '__main__':
