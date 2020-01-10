@@ -7,7 +7,19 @@
     "RingBalance": "Balance",
     "EthBlockNumber": "u64",
     "EthAddress": "H160",
-    "EthTransactionIndex": "(H256, u64)",
+    "EthTransactionIndex": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "col1",
+          "H256"
+        ],
+        [
+          "col2",
+          "u64"
+        ]
+      ]
+    },
     "EraIndex": "u32",
     "Power": "u128",
     "ValidatorPrefs": {

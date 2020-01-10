@@ -3,16 +3,31 @@
     "FullIdentification": {
       "type": "struct",
       "type_mapping": [
-         ["total", "Compact<Balance>"],
-         ["own", "Compact<Balance>"],
-         ["others", "Vec<IndividualExposure>"]
+        [
+          "total",
+          "Compact<Balance>"
+        ],
+        [
+          "own",
+          "Compact<Balance>"
+        ],
+        [
+          "others",
+          "Vec<IndividualExposure>"
+        ]
       ]
     },
     "IdentificationTuple": {
       "type": "struct",
       "type_mapping": [
-         ["validatorId", "ValidatorId"],
-         ["exposure", "FullIdentification"]
+        [
+          "validatorId",
+          "ValidatorId"
+        ],
+        [
+          "exposure",
+          "FullIdentification"
+        ]
       ]
     },
     "SetId": "U64",
@@ -25,12 +40,30 @@
     "NextAuthority": {
       "type": "struct",
       "type_mapping": [
-         ["AuthorityId", "AuthorityId"],
-         ["weight", "AuthorityWeight"]
+        [
+          "AuthorityId",
+          "AuthorityId"
+        ],
+        [
+          "weight",
+          "AuthorityWeight"
+        ]
       ]
     },
     "AuthorityList": "Vec<NextAuthority>",
-    "BalanceUpload": "(AccountId, u64)",
+    "BalanceUpload": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "col1",
+          "AccountId"
+        ],
+        [
+          "col2",
+          "u64"
+        ]
+      ]
+    },
     "CollatorId": "H256",
     "DispatchClass": {
       "type": "enum",
@@ -42,12 +75,33 @@
     "DispatchInfo": {
       "type": "struct",
       "type_mapping": [
-         ["weight", "Weight"],
-         ["class", "DispatchClass"],
-         ["paysFee", "bool"]
+        [
+          "weight",
+          "Weight"
+        ],
+        [
+          "class",
+          "DispatchClass"
+        ],
+        [
+          "paysFee",
+          "bool"
+        ]
       ]
     },
-    "EgressQueueRoot": "(ParaId, Hash)",
+    "EgressQueueRoot": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "col1",
+          "ParaId"
+        ],
+        [
+          "col2",
+          "Hash"
+        ]
+      ]
+    },
     "EventIndex": "u32",
     "IdentityFields": {
       "type": "enum",
@@ -61,30 +115,87 @@
         "Image"
       ]
     },
-    "IdentityInfoAdditional": "(Data, Data)",
+    "IdentityInfoAdditional": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "col1",
+          "Data"
+        ],
+        [
+          "col2",
+          "Data"
+        ]
+      ]
+    },
     "IdentityInfo": {
       "type": "struct",
       "type_mapping": [
-         ["additional", "Vec<IdentityInfoAdditional>"],
-         ["display", "Data"],
-         ["legal", "Data"],
-         ["web", "Data"],
-         ["riot", "Data"],
-         ["email", "Data"],
-         ["pgpFingerprint", "Option<H160>"],
-         ["image", "Data"]
+        [
+          "additional",
+          "Vec<IdentityInfoAdditional>"
+        ],
+        [
+          "display",
+          "Data"
+        ],
+        [
+          "legal",
+          "Data"
+        ],
+        [
+          "web",
+          "Data"
+        ],
+        [
+          "riot",
+          "Data"
+        ],
+        [
+          "email",
+          "Data"
+        ],
+        [
+          "pgpFingerprint",
+          "Option<H160>"
+        ],
+        [
+          "image",
+          "Data"
+        ]
       ]
     },
     "Judgement": {
       "type": "enum",
       "type_mapping": [
-        ["Unknown", "Null"],
-        ["FeePaid", "Balance"],
-        ["Reasonable", "Null"],
-        ["KnownGood", "Null"],
-        ["OutOfDate", "Null"],
-        ["LowQuality", "Null"],
-        ["Erroneous", "Null"]
+        [
+          "Unknown",
+          "Null"
+        ],
+        [
+          "FeePaid",
+          "Balance"
+        ],
+        [
+          "Reasonable",
+          "Null"
+        ],
+        [
+          "KnownGood",
+          "Null"
+        ],
+        [
+          "OutOfDate",
+          "Null"
+        ],
+        [
+          "LowQuality",
+          "Null"
+        ],
+        [
+          "Erroneous",
+          "Null"
+        ]
       ]
     },
     "Judgement<BalanceOf>": "Judgement",
@@ -95,7 +206,19 @@
     "MomentOf": "Moment",
     "MoreAttestations": "Null",
     "Multiplier": "u64",
-    "Offender": "(ValidatorId, Exposure)",
+    "Offender": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "col1",
+          "ValidatorId"
+        ],
+        [
+          "col2",
+          "Exposure"
+        ]
+      ]
+    },
     "ParaIdOf": "ParaId",
     "ParaScheduling": {
       "type": "enum",
@@ -107,50 +230,120 @@
     "ParaInfo": {
       "type": "struct",
       "type_mapping": [
-         ["scheduling", "ParaScheduling"]
+        [
+          "scheduling",
+          "ParaScheduling"
+        ]
       ]
     },
     "(ReferendumInfo<BlockNumber, Hash>)": {
       "type": "struct",
       "type_mapping": [
-         ["end", "BlockNumber"],
-         ["proposalHash", "Hash"],
-         ["threshold", "VoteThreshold"],
-         ["delay", "BlockNumber"]
+        [
+          "end",
+          "BlockNumber"
+        ],
+        [
+          "proposalHash",
+          "Hash"
+        ],
+        [
+          "threshold",
+          "VoteThreshold"
+        ],
+        [
+          "delay",
+          "BlockNumber"
+        ]
       ]
     },
     "RegistrarIndex": "u32",
     "RegistrarInfo": {
       "type": "struct",
       "type_mapping": [
-         ["account", "AccountId"],
-         ["fee", "Balance"],
-         ["fields", "IdentityFields"]
+        [
+          "account",
+          "AccountId"
+        ],
+        [
+          "fee",
+          "Balance"
+        ],
+        [
+          "fields",
+          "IdentityFields"
+        ]
       ]
     },
     "Registration": {
       "type": "struct",
       "type_mapping": [
-         ["judgements", "Vec<RegistrationJudgement>"],
-         ["deposit", "Balance"],
-         ["info", "IdentityInfo"]
+        [
+          "judgements",
+          "Vec<RegistrationJudgement>"
+        ],
+        [
+          "deposit",
+          "Balance"
+        ],
+        [
+          "info",
+          "IdentityInfo"
+        ]
       ]
     },
-    "RegistrationJudgement": "(RegistrarIndex, Judgement)",
+    "RegistrationJudgement": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "col1",
+          "RegistrarIndex"
+        ],
+        [
+          "col2",
+          "Judgement"
+        ]
+      ]
+    },
     "ReportIdOf": "Hash",
     "SubId": "u32",
     "Weight": "u32",
     "WeightMultiplier": "u64",
-    "WinningDataEntry": "(AccountId, ParaIdOf, BalanceOf)",
+    "WinningDataEntry": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "col1",
+          "AccountId"
+        ],
+        [
+          "col2",
+          "ParaIdOf"
+        ],
+        [
+          "col3",
+          "BalanceOf"
+        ]
+      ]
+    },
     "WinningData": "Vec<WinningDataEntry>",
     "Index": "U32",
     "Kind": "[u8; 16]",
     "Nominations": {
       "type": "struct",
       "type_mapping": [
-         ["targets", "Vec<AccountId>"],
-         ["submittedIn", "EraIndex"],
-         ["suppressed", "bool"]
+        [
+          "targets",
+          "Vec<AccountId>"
+        ],
+        [
+          "submittedIn",
+          "EraIndex"
+        ],
+        [
+          "suppressed",
+          "bool"
+        ]
       ]
     },
     "OpaqueTimeSlot": "Bytes",
@@ -168,10 +361,22 @@
     "Heartbeat": {
       "type": "struct",
       "type_mapping": [
-         ["blockNumber", "BlockNumber"],
-         ["networkState", "OpaqueNetworkState"],
-         ["sessionIndex", "SessionIndex"],
-         ["authorityId", "AuthorityId"]
+        [
+          "blockNumber",
+          "BlockNumber"
+        ],
+        [
+          "networkState",
+          "OpaqueNetworkState"
+        ],
+        [
+          "sessionIndex",
+          "SessionIndex"
+        ],
+        [
+          "authorityId",
+          "AuthorityId"
+        ]
       ]
     },
     "RewardDestination": {
@@ -186,19 +391,43 @@
     "DigestItem": {
       "type": "enum",
       "type_mapping": [
-        ["Other", "Vec<u8>"],
-        ["AuthoritiesChange", "Vec<AuthorityId>"],
-        ["ChangesTrieRoot", "Hash"],
-        ["SealV0", "SealV0"],
-        ["Consensus", "Consensus"],
-        ["Seal", "Seal"],
-        ["PreRuntime", "PreRuntime"]
+        [
+          "Other",
+          "Vec<u8>"
+        ],
+        [
+          "AuthoritiesChange",
+          "Vec<AuthorityId>"
+        ],
+        [
+          "ChangesTrieRoot",
+          "Hash"
+        ],
+        [
+          "SealV0",
+          "SealV0"
+        ],
+        [
+          "Consensus",
+          "Consensus"
+        ],
+        [
+          "Seal",
+          "Seal"
+        ],
+        [
+          "PreRuntime",
+          "PreRuntime"
+        ]
       ]
     },
     "Digest": {
       "type": "struct",
       "type_mapping": [
-        ["logs", "Vec<DigestItem<Hash>>"]
+        [
+          "logs",
+          "Vec<DigestItem<Hash>>"
+        ]
       ]
     },
     "DigestOf": "Digest",
@@ -206,53 +435,110 @@
     "SlashingSpans": {
       "type": "struct",
       "type_mapping": [
-         ["spanIndex", "SpanIndex"],
-         ["lastStart", "EraIndex"],
-         ["prior", "Vec<EraIndex>"]
+        [
+          "spanIndex",
+          "SpanIndex"
+        ],
+        [
+          "lastStart",
+          "EraIndex"
+        ],
+        [
+          "prior",
+          "Vec<EraIndex>"
+        ]
       ]
     },
     "slashing::SlashingSpans": "SlashingSpans",
     "SpanRecord": {
       "type": "struct",
       "type_mapping": [
-         ["slashed", "Balance"],
-         ["paidOut", "Balance"]
+        [
+          "slashed",
+          "Balance"
+        ],
+        [
+          "paidOut",
+          "Balance"
+        ]
       ]
     },
     "slashing::SpanRecord<BalanceOf>": "SpanRecord",
     "UnappliedSlashOther": {
       "type": "struct",
       "type_mapping": [
-         ["account", "AccountId"],
-         ["amount", "Balance"]
+        [
+          "account",
+          "AccountId"
+        ],
+        [
+          "amount",
+          "Balance"
+        ]
       ]
     },
     "UnappliedSlash": {
       "type": "struct",
       "type_mapping": [
-         ["validator", "AccountId"],
-         ["own", "AccountId"],
-         ["others", "Vec<UnappliedSlashOther>"],
-         ["reporters", "Vec<AccountId>"],
-         ["payout", "Balance"]
+        [
+          "validator",
+          "AccountId"
+        ],
+        [
+          "own",
+          "AccountId"
+        ],
+        [
+          "others",
+          "Vec<UnappliedSlashOther>"
+        ],
+        [
+          "reporters",
+          "Vec<AccountId>"
+        ],
+        [
+          "payout",
+          "Balance"
+        ]
       ]
     },
     "Keys": "SessionKeysSubstrate",
     "Header": {
       "type": "struct",
       "type_mapping": [
-        ["parent_hash", "H256"],
-        ["number", "Compact<BlockNumber>"],
-        ["state_root", "H256"],
-        ["extrinsics_root", "H256"],
-        ["digest", "Digest"]
+        [
+          "parent_hash",
+          "H256"
+        ],
+        [
+          "number",
+          "Compact<BlockNumber>"
+        ],
+        [
+          "state_root",
+          "H256"
+        ],
+        [
+          "extrinsics_root",
+          "H256"
+        ],
+        [
+          "digest",
+          "Digest"
+        ]
       ]
     },
     "DispatchError": {
       "type": "struct",
       "type_mapping": [
-        ["module", "Option<u8>"],
-        ["error", "u8"]
+        [
+          "module",
+          "Option<u8>"
+        ],
+        [
+          "error",
+          "u8"
+        ]
       ]
     }
   }
