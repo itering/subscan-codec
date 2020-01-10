@@ -1,3 +1,6 @@
+## SubScan codec gRpc tool
+
+
 ## install
 
     virtualenv -p python3.6 env
@@ -19,8 +22,3 @@
 ## proto compile
 
     python -m grpc_tools.protoc -I . --python_out=libs --grpc_python_out=libs rpc.proto
-
-
-## Todo 
-
-1. Auto get current metadata
