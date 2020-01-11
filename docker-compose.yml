@@ -3,6 +3,7 @@ version: "2"
 services:
   kusama-tools:
     image: scan/codec_grpc
+    build: .
     environment:
       NETWORK_NODE: 'kusama'
     networks:
