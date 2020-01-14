@@ -2,6 +2,7 @@ version: "2"
 
 services:
   kusama-tools:
+    restart: always
     image: scan/codec_grpc
     build: .
     environment:
@@ -9,6 +10,7 @@ services:
     networks:
       - app_net
   icefrog-tools:
+    restart: always
     image: scan/codec_grpc
     environment:
       NETWORK_NODE: 'icefrog'
