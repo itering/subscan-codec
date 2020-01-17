@@ -16,6 +16,13 @@ services:
       NETWORK_NODE: 'icefrog'
     networks:
       - app_net
+  edgeware-tools:
+    restart: always
+    image: scan/codec_grpc
+    environment:
+      NETWORK_NODE: 'edgeware'
+    networks:
+      - app_net
 networks:
   app_net:
     external: true
