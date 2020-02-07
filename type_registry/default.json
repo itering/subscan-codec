@@ -655,6 +655,19 @@
         "Vouching",
         "Banned"
       ]
+    },
+    "ExtrinsicMetadata": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "version",
+          "u8"
+        ],
+        [
+          "signedExtensions",
+          "Vec<Bytes>"
+        ]
+      ]
     }
   }
 }
