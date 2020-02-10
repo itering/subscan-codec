@@ -1,6 +1,6 @@
-from scalecodec import ScaleBytes
+from pkg.scalecodec import ScaleBytes
 from abc import ABC
-from scalecodec.metadata import MetadataDecoder
+from pkg.scalecodec.metadata import MetadataDecoder
 
 
 class MetadataInstant(ABC):

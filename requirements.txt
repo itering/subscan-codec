@@ -1,6 +1,5 @@
 grpcio==1.26.0
 grpcio-tools==1.26.0
-git+https://github.com/freehere107/py-scale-codec.git@master#egg=scalecodec
 coloredlogs==10.0
 websocket-client==0.56.0
 requests==2.22.0

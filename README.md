@@ -1,5 +1,6 @@
 ## SubScan codec gRpc tool
 
+> reference from https://github.com/polkascan/py-scale-codec
 
 ## install
 
@@ -13,12 +14,8 @@
 
 ## server run
     
-    python rpc_server.py
-
-## update scalecodec
-
-    pip uninstall -y scalecodec && pip install -r requirements.txt
+    python server.py
     
 ## proto compile
 
-    python -m grpc_tools.protoc -I . --python_out=libs --grpc_python_out=libs rpc.proto
+    python -m grpc_tools.protoc -I . --python_out=pb --grpc_python_out=pb rpc.proto

@@ -1,11 +1,11 @@
 import json
 import os
-from scalecodec import ScaleBytes
-from scalecodec.base import ScaleDecoder, Singleton
-from scalecodec.block import ExtrinsicsDecoder, EventsDecoder, LogDigest
+from pkg.scalecodec import ScaleBytes
+from pkg.scalecodec.base import ScaleDecoder, Singleton
+from pkg.scalecodec.block import ExtrinsicsDecoder, EventsDecoder, LogDigest
 from codec import MetadataInstant
 from logger.conf import info
-from libs import rpc_pb2, rpc_pb2_grpc
+from pb import rpc_pb2, rpc_pb2_grpc
 
 
 class InvalidMetadataSpec(Exception):

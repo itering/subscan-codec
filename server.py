@@ -2,9 +2,9 @@ import os
 import grpc
 
 from concurrent import futures
-from scalecodec.base import RuntimeConfiguration
+from pkg.scalecodec.base import RuntimeConfiguration
 from codec.tools import Tools
-from libs import rpc_pb2_grpc
+from pb import rpc_pb2_grpc
 from type_registry import load_type_registry
 from logger.conf import log_config, LOGGER
 from codec.tools import MetadataRegistry

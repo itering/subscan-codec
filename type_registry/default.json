@@ -1,5 +1,89 @@
 {
   "default": {
+    "(AccountId, Balance)": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "account",
+          "AccountId"
+        ],
+        [
+          "balance",
+          "Balance"
+        ]
+      ]
+    },
+    "AccountData": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "free",
+          "Balance"
+        ],
+        [
+          "reserved",
+          "Balance"
+        ],
+        [
+          "miscFrozen",
+          "Balance"
+        ],
+        [
+          "feeFrozen",
+          "Balance"
+        ]
+      ]
+    },
+    "CandidateReceipt": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "parachainIndex",
+          "ParaId"
+        ],
+        [
+          "collator",
+          "AccountId"
+        ],
+        [
+          "signature",
+          "CollatorSignature"
+        ],
+        [
+          "headData",
+          "HeadData"
+        ],
+        [
+          "balanceUploads",
+          "Vec<BalanceUpload>"
+        ],
+        [
+          "egressQueueRoots",
+          "Vec<EgressQueueRoot>"
+        ],
+        [
+          "fees",
+          "u64"
+        ],
+        [
+          "blockDataHash",
+          "Hash"
+        ]
+      ]
+    },
+    "AttestedCandidate": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "candidate",
+          "CandidateReceipt"
+        ],
+        [
+          "validityVotes",
+          "Vec<ValidityVote>"
+        ]
+      ]
+    },
     "FullIdentification": {
       "type": "struct",
       "type_mapping": [
@@ -31,6 +115,14 @@
       ]
     },
     "SetId": "U64",
+    "Reasons": {
+      "type": "enum",
+      "value_list": [
+        "Fee",
+        "Misc",
+        "All"
+      ]
+    },
     "RoundNumber": "U64",
     "SessionIndex": "U32",
     "AuctionIndex": "U32",
@@ -216,6 +308,49 @@
         [
           "col2",
           "Exposure"
+        ]
+      ]
+    },
+    "PhantomData": "Null",
+    "sp_std::marker::PhantomData<(AccountId, Event)>": "PhantomData",
+    "Reporter": "AccountId",
+    "OffenceDetails<AccountId, IdentificationTuple>": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "offender",
+          "Offender"
+        ],
+        [
+          "reporters",
+          "Vec<Reporter>"
+        ]
+      ]
+    },
+    "OpenTipFinder": "(AccountId, Balance)",
+    "OpenTipTip": "(AccountId, Balance)",
+    "OpenTip<AccountId, BalanceOf, BlockNumber, Hash>": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "reason",
+          "Hash"
+        ],
+        [
+          "who",
+          "AccountId"
+        ],
+        [
+          "finder",
+          "Option<OpenTipFinder>"
+        ],
+        [
+          "closes",
+          "Option<BlockNumber>"
+        ],
+        [
+          "tips",
+          "Vec<OpenTipTip>"
         ]
       ]
     },
