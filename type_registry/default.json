@@ -196,26 +196,27 @@
     },
     "EventIndex": "u32",
     "IdentityFields": {
-      "type": "enum",
-      "value_list": [
-        "Display",
-        "Legal",
-        "Web",
-        "Riot",
-        "Email",
-        "PgpFingerprint",
-        "Image"
-      ]
+      "type": "set",
+      "value_list": {
+        "Display": 1,
+        "Legal": 2,
+        "Web": 4,
+        "Riot": 8,
+        "Email": 16,
+        "PgpFingerprint": 32,
+        "Image": 64,
+        "Twitter": 128
+      }
     },
     "IdentityInfoAdditional": {
       "type": "struct",
       "type_mapping": [
         [
-          "col1",
+          "field",
           "Data"
         ],
         [
-          "col2",
+          "value",
           "Data"
         ]
       ]
@@ -253,6 +254,10 @@
         ],
         [
           "image",
+          "Data"
+        ],
+        [
+          "twitter",
           "Data"
         ]
       ]
