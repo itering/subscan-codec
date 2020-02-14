@@ -297,10 +297,11 @@ class ScaleDecoder(ABC):
         name = re.sub(r'<T>', "", name)
         name = re.sub(r'<T as Trait>::', "", name)
         name = re.sub(r'\n', "", name)
+        name = re.sub(r'(grandpa|session|slashing)::', "", name)
 
         if name == '()':
             return "Null"
-        if name == 'Vec<u8>':
+        if name == name in ['Vec<u8>', '&[u8]']:
             return "Bytes"
         if name == '<Lookup as StaticLookup>::Source':
             return 'Address'
@@ -322,6 +323,8 @@ class ScaleDecoder(ABC):
             return 'ScheduleGas'
         if name == '<AuthorityId as RuntimeAppPublic>::Signature':
             return 'AuthorityId'
+        if name == 'RawAddress':
+            return 'Address'
         return name
 
 

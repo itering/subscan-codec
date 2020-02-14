@@ -688,9 +688,10 @@ class Data(Enum):
     ]
 
     def process(self):
-
-        self.index = int(self.get_next_bytes(1).hex(), 16)
-
+        c = self.get_next_bytes(1).hex()
+        if c is "":
+            return {'None': None}
+        self.index = int(c, 16)
         if self.index == 0:
             return {'None': None}
 
