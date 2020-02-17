@@ -1,5 +1,11 @@
 {
   "default": {
+    "ValidatorPrefs":{
+      "type": "struct",
+      "type_mapping": [
+        ["Commission","Compact<Balance>"]
+      ]
+    },
     "Keys": {
       "type": "struct",
       "type_mapping": [
