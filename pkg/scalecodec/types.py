@@ -1061,16 +1061,6 @@ class Set(ScaleType):
         return result
 
 
-class WithdrawReasons(Set):
-    value_list = (
-        (1, 'TransactionPayment'),
-        (2, 'Transfer'),
-        (4, 'Reserve'),
-        (6, 'Fee'),
-        (16, 'Tip'),
-    )
-
-
 class Bidder(Enum):
     type_string = 'Bidder<AccountId, ParaIdOf>'
 
@@ -1716,27 +1706,6 @@ class RawAuraPreDigest(Struct):
 class LockIdentifier(VecU8Length8):
     pass
 
-
-class Set(ScaleType):
-    value_list = []
-
-    def __init__(self, data, value_list=None, **kwargs):
-        self.set = None
-
-        if value_list:
-            self.value_list = value_list
-        super().__init__(data, **kwargs)
-
-    def process(self):
-        c = self.get_next_bytes(1).hex()
-        self.set = int(c, 16)
-        result = []
-        if self.set > 0:
-            for key, data in self.value_list:
-                if self.set >= key:
-                    result.append(data)
-                    self.set -= key
-        return result
 
 
 class RawBabePreDigest(Struct):
