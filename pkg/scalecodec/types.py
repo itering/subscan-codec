@@ -1044,21 +1044,20 @@ class Set(ScaleType):
     value_list = []
 
     def __init__(self, data, value_list=None, **kwargs):
-        self.set = None
-
+        self.set_value = None
         if value_list:
             self.value_list = value_list
+
         super().__init__(data, **kwargs)
 
     def process(self):
-        c = self.get_next_bytes(1).hex()
-        self.set = int(c, 16)
+        self.set_value = self.process_type('u64').value
         result = []
-        if self.set > 0:
-            for key, data in self.value_list:
-                if self.set >= key:
-                    result.append(data)
-                    self.set -= key
+        if self.set_value > 0:
+
+            for value, set_mask in self.value_list.items():
+                if self.set_value & set_mask > 0:
+                    result.append(value)
         return result
 
 
