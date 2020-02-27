@@ -48,6 +48,7 @@ message LogReply {
 message StorageRequest {
     string message = 1;
     string decoderType = 2;
+    int32 metadataVersion = 3;
 }
 
 message StorageReply {

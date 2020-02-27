@@ -376,7 +376,28 @@
         ]
       ]
     },
-    "(ReferendumInfo<BlockNumber, Hash>)": {
+    "ReferendumInfo<BlockNumber, Proposal>": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "end",
+          "BlockNumber"
+        ],
+        [
+          "proposal",
+          "Proposal"
+        ],
+        [
+          "threshold",
+          "VoteThreshold"
+        ],
+        [
+          "delay",
+          "BlockNumber"
+        ]
+      ]
+    },
+    "ReferendumInfo<BlockNumber, Hash>": {
       "type": "struct",
       "type_mapping": [
         [

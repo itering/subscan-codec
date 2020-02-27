@@ -91,8 +91,14 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
     def DecodeStorage(self, request, context):
         info('DecodeStorage', (request.message, request.decoderType))
         msg = request.message
+        spec_ver = request.metadataVersion
         decoder_type = request.decoderType
-        obj = ScaleDecoder.get_decoder_class(decoder_type, ScaleBytes(msg))
+        if MetadataRegistry().has_reg(spec_ver) is False:
+            cl = MetadataRegistry().registry.get(sorted(MetadataRegistry().registry.keys())[-1], None)
+            t = cl.Decoder
+        else:
+            t = MetadataRegistry.get_class_decoder(spec_ver)
+        obj = ScaleDecoder.get_decoder_class(decoder_type, ScaleBytes(msg), metadata=t)
         c = obj.decode(False)
         return rpc_pb2.ExtrinsicReply(message=json.dumps(c))
 

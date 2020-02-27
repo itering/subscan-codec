@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='codec_protos',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\trpc.proto\x12\x0c\x63odec_protos\"<\n\x10\x45xtrinsicRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"0\n\x0e\x45xtrinsicReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"8\n\x0c\x45ventRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\",\n\nEventReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"6\n\nLogRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1b\n\x08LogReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"6\n\x0eStorageRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65\x63oderType\x18\x02 \x01(\t\"\x1f\n\x0cStorageReply\x12\x0f\n\x07message\x18\x01 \x01(\t\";\n\x0fMetadataRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\" \n\rMetadataReply\x12\x0f\n\x07message\x18\x01 \x01(\x08\x32\xfc\x02\n\x05Tools\x12Q\n\x0f\x44\x65\x63odeExtrinsic\x12\x1e.codec_protos.ExtrinsicRequest\x1a\x1c.codec_protos.ExtrinsicReply\"\x00\x12\x45\n\x0b\x44\x65\x63odeEvent\x12\x1a.codec_protos.EventRequest\x1a\x18.codec_protos.EventReply\"\x00\x12?\n\tDecodeLog\x12\x18.codec_protos.LogRequest\x1a\x16.codec_protos.LogReply\"\x00\x12K\n\rDecodeStorage\x12\x1c.codec_protos.StorageRequest\x1a\x1a.codec_protos.StorageReply\"\x00\x12K\n\x0bRegMetadata\x12\x1d.codec_protos.MetadataRequest\x1a\x1b.codec_protos.MetadataReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\trpc.proto\x12\x0c\x63odec_protos\"<\n\x10\x45xtrinsicRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"0\n\x0e\x45xtrinsicReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"8\n\x0c\x45ventRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\",\n\nEventReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\x08\"6\n\nLogRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\"\x1b\n\x08LogReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"O\n\x0eStorageRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65\x63oderType\x18\x02 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x03 \x01(\x05\"\x1f\n\x0cStorageReply\x12\x0f\n\x07message\x18\x01 \x01(\t\";\n\x0fMetadataRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x17\n\x0fmetadataVersion\x18\x02 \x01(\x05\" \n\rMetadataReply\x12\x0f\n\x07message\x18\x01 \x01(\x08\x32\xfc\x02\n\x05Tools\x12Q\n\x0f\x44\x65\x63odeExtrinsic\x12\x1e.codec_protos.ExtrinsicRequest\x1a\x1c.codec_protos.ExtrinsicReply\"\x00\x12\x45\n\x0b\x44\x65\x63odeEvent\x12\x1a.codec_protos.EventRequest\x1a\x18.codec_protos.EventReply\"\x00\x12?\n\tDecodeLog\x12\x18.codec_protos.LogRequest\x1a\x16.codec_protos.LogReply\"\x00\x12K\n\rDecodeStorage\x12\x1c.codec_protos.StorageRequest\x1a\x1a.codec_protos.StorageReply\"\x00\x12K\n\x0bRegMetadata\x12\x1d.codec_protos.MetadataRequest\x1a\x1b.codec_protos.MetadataReply\"\x00\x62\x06proto3')
 )
 
 
@@ -268,6 +268,13 @@ _STORAGEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='metadataVersion', full_name='codec_protos.StorageRequest.metadataVersion', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -281,7 +288,7 @@ _STORAGEREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=328,
-  serialized_end=382,
+  serialized_end=407,
 )
 
 
@@ -311,8 +318,8 @@ _STORAGEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=384,
-  serialized_end=415,
+  serialized_start=409,
+  serialized_end=440,
 )
 
 
@@ -349,8 +356,8 @@ _METADATAREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=417,
-  serialized_end=476,
+  serialized_start=442,
+  serialized_end=501,
 )
 
 
@@ -380,8 +387,8 @@ _METADATAREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=478,
-  serialized_end=510,
+  serialized_start=503,
+  serialized_end=535,
 )
 
 DESCRIPTOR.message_types_by_name['ExtrinsicRequest'] = _EXTRINSICREQUEST
@@ -396,74 +403,74 @@ DESCRIPTOR.message_types_by_name['MetadataRequest'] = _METADATAREQUEST
 DESCRIPTOR.message_types_by_name['MetadataReply'] = _METADATAREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-ExtrinsicRequest = _reflection.GeneratedProtocolMessageType('ExtrinsicRequest', (_message.Message,), dict(
-  DESCRIPTOR = _EXTRINSICREQUEST,
-  __module__ = 'rpc_pb2'
+ExtrinsicRequest = _reflection.GeneratedProtocolMessageType('ExtrinsicRequest', (_message.Message,), {
+  'DESCRIPTOR' : _EXTRINSICREQUEST,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.ExtrinsicRequest)
-  ))
+  })
 _sym_db.RegisterMessage(ExtrinsicRequest)
 
-ExtrinsicReply = _reflection.GeneratedProtocolMessageType('ExtrinsicReply', (_message.Message,), dict(
-  DESCRIPTOR = _EXTRINSICREPLY,
-  __module__ = 'rpc_pb2'
+ExtrinsicReply = _reflection.GeneratedProtocolMessageType('ExtrinsicReply', (_message.Message,), {
+  'DESCRIPTOR' : _EXTRINSICREPLY,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.ExtrinsicReply)
-  ))
+  })
 _sym_db.RegisterMessage(ExtrinsicReply)
 
-EventRequest = _reflection.GeneratedProtocolMessageType('EventRequest', (_message.Message,), dict(
-  DESCRIPTOR = _EVENTREQUEST,
-  __module__ = 'rpc_pb2'
+EventRequest = _reflection.GeneratedProtocolMessageType('EventRequest', (_message.Message,), {
+  'DESCRIPTOR' : _EVENTREQUEST,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.EventRequest)
-  ))
+  })
 _sym_db.RegisterMessage(EventRequest)
 
-EventReply = _reflection.GeneratedProtocolMessageType('EventReply', (_message.Message,), dict(
-  DESCRIPTOR = _EVENTREPLY,
-  __module__ = 'rpc_pb2'
+EventReply = _reflection.GeneratedProtocolMessageType('EventReply', (_message.Message,), {
+  'DESCRIPTOR' : _EVENTREPLY,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.EventReply)
-  ))
+  })
 _sym_db.RegisterMessage(EventReply)
 
-LogRequest = _reflection.GeneratedProtocolMessageType('LogRequest', (_message.Message,), dict(
-  DESCRIPTOR = _LOGREQUEST,
-  __module__ = 'rpc_pb2'
+LogRequest = _reflection.GeneratedProtocolMessageType('LogRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LOGREQUEST,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.LogRequest)
-  ))
+  })
 _sym_db.RegisterMessage(LogRequest)
 
-LogReply = _reflection.GeneratedProtocolMessageType('LogReply', (_message.Message,), dict(
-  DESCRIPTOR = _LOGREPLY,
-  __module__ = 'rpc_pb2'
+LogReply = _reflection.GeneratedProtocolMessageType('LogReply', (_message.Message,), {
+  'DESCRIPTOR' : _LOGREPLY,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.LogReply)
-  ))
+  })
 _sym_db.RegisterMessage(LogReply)
 
-StorageRequest = _reflection.GeneratedProtocolMessageType('StorageRequest', (_message.Message,), dict(
-  DESCRIPTOR = _STORAGEREQUEST,
-  __module__ = 'rpc_pb2'
+StorageRequest = _reflection.GeneratedProtocolMessageType('StorageRequest', (_message.Message,), {
+  'DESCRIPTOR' : _STORAGEREQUEST,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.StorageRequest)
-  ))
+  })
 _sym_db.RegisterMessage(StorageRequest)
 
-StorageReply = _reflection.GeneratedProtocolMessageType('StorageReply', (_message.Message,), dict(
-  DESCRIPTOR = _STORAGEREPLY,
-  __module__ = 'rpc_pb2'
+StorageReply = _reflection.GeneratedProtocolMessageType('StorageReply', (_message.Message,), {
+  'DESCRIPTOR' : _STORAGEREPLY,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.StorageReply)
-  ))
+  })
 _sym_db.RegisterMessage(StorageReply)
 
-MetadataRequest = _reflection.GeneratedProtocolMessageType('MetadataRequest', (_message.Message,), dict(
-  DESCRIPTOR = _METADATAREQUEST,
-  __module__ = 'rpc_pb2'
+MetadataRequest = _reflection.GeneratedProtocolMessageType('MetadataRequest', (_message.Message,), {
+  'DESCRIPTOR' : _METADATAREQUEST,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.MetadataRequest)
-  ))
+  })
 _sym_db.RegisterMessage(MetadataRequest)
 
-MetadataReply = _reflection.GeneratedProtocolMessageType('MetadataReply', (_message.Message,), dict(
-  DESCRIPTOR = _METADATAREPLY,
-  __module__ = 'rpc_pb2'
+MetadataReply = _reflection.GeneratedProtocolMessageType('MetadataReply', (_message.Message,), {
+  'DESCRIPTOR' : _METADATAREPLY,
+  '__module__' : 'rpc_pb2'
   # @@protoc_insertion_point(class_scope:codec_protos.MetadataReply)
-  ))
+  })
 _sym_db.RegisterMessage(MetadataReply)
 
 
@@ -474,8 +481,8 @@ _TOOLS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=513,
-  serialized_end=893,
+  serialized_start=538,
+  serialized_end=918,
   methods=[
   _descriptor.MethodDescriptor(
     name='DecodeExtrinsic',
