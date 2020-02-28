@@ -23,6 +23,13 @@ services:
       NETWORK_NODE: 'edgeware'
     networks:
       - app_net
+  canary-tools:
+    restart: always
+    image: scan/codec_grpc
+    environment:
+      NETWORK_NODE: 'canary'
+    networks:
+      - app_net
 networks:
   app_net:
     external: true
