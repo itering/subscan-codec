@@ -500,12 +500,12 @@ class MetadataV6ModuleStorage(MetadataV5ModuleStorage):
 
 class MetadataV6ModuleConstants(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.type = None
         self.constant_value = None
         self.docs = []
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def process(self):
         self.name = self.process_type('Bytes').value
@@ -646,7 +646,7 @@ class MetadataV7ModuleStorage(MetadataV6ModuleStorage):
 
 class MetadataV7ModuleStorageEntry(ScaleDecoder):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.modifier = None
         self.type = {}
@@ -753,7 +753,7 @@ class MetadataV8Decoder(ScaleDecoder):
 
 class MetadataV8Module(MetadataV6Module):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.prefix = None
         self.call_index = None
@@ -816,7 +816,7 @@ class MetadataV8Module(MetadataV6Module):
 
 class MetadataModuleError(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.docs = []
         super().__init__(data, sub_type)
@@ -1251,12 +1251,12 @@ class MetadataV0Module(ScaleType):
 
 class MetadataV0ModuleFunction(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.id = None
         self.name = None
         self.args = []
         self.docs = []
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def get_identifier(self):
         return self.name
@@ -1338,7 +1338,7 @@ class MetadataV0Section(ScaleType):
 
 class MetadataModule(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.prefix = None
         self.call_index = None
@@ -1350,7 +1350,7 @@ class MetadataModule(ScaleType):
         self.events = None
         self.constants = []
         self.errors = []
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def get_identifier(self):
         return self.name.lower()
@@ -1452,13 +1452,13 @@ class MetadataV1Module(ScaleType):
 
 class MetadataModuleStorage(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.modifier = None
         self.type = {}
         self.fallback = None
         self.docs = []
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def process(self):
         self.name = self.process_type('Bytes').value
@@ -1537,11 +1537,11 @@ class MetadataV1ModuleStorage(ScaleType):
 
 class MetadataModuleCall(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.args = []
         self.docs = []
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def get_identifier(self):
         return self.name
@@ -1562,11 +1562,11 @@ class MetadataModuleCall(ScaleType):
 
 class MetadataModuleCallArgument(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.type = None
 
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def process(self):
         self.name = self.process_type('Bytes').value
@@ -1580,11 +1580,11 @@ class MetadataModuleCallArgument(ScaleType):
 
 class MetadataModuleEvent(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.args = []
         self.docs = []
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def process(self):
         self.name = self.process_type('Bytes').value
