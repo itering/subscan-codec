@@ -114,7 +114,7 @@ class MetadataV4Decoder(ScaleDecoder):
 
 class MetadataV4Module(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.prefix = None
         self.call_index = None
@@ -126,7 +126,7 @@ class MetadataV4Module(ScaleType):
         self.events = None
         self.constants = []
         self.errors = []
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def get_identifier(self):
         return self.name.lower()
@@ -172,14 +172,14 @@ class MetadataV4Module(ScaleType):
 
 class MetadataV4ModuleStorage(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.modifier = None
         self.type = {}
         self.fallback = None
         self.docs = []
         self.hasher = None
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def process(self):
 
@@ -332,14 +332,14 @@ class MetadataV5Module(ScaleType):
 
 
 class MetadataV5ModuleStorage(ScaleType):
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.modifier = None
         self.type = {}
         self.fallback = None
         self.docs = []
         self.hasher = None
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def process(self):
 
@@ -435,7 +435,7 @@ class MetadataV6Decoder(ScaleDecoder):
 
 class MetadataV6Module(ScaleType):
 
-    def __init__(self, data, sub_type=None):
+    def __init__(self, data, sub_type=None, **kwargs):
         self.name = None
         self.prefix = None
         self.call_index = None
@@ -447,7 +447,7 @@ class MetadataV6Module(ScaleType):
         self.events = None
         self.constants = []
         self.errors = []
-        super().__init__(data, sub_type)
+        super().__init__(data, sub_type, **kwargs)
 
     def get_identifier(self):
         return self.name.lower()

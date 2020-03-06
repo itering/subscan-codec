@@ -1,7 +1,7 @@
 version: "2"
 
 services:
-  kusama-tools:
+  kusama-tools: &tools_base
     restart: always
     image: scan/codec_grpc
     build: .
@@ -9,27 +9,18 @@ services:
       NETWORK_NODE: 'kusama'
     networks:
       - app_net
-  icefrog-tools:
-    restart: always
-    image: scan/codec_grpc
-    environment:
-      NETWORK_NODE: 'icefrog'
-    networks:
-      - app_net
   edgeware-tools:
-    restart: always
-    image: scan/codec_grpc
+    <<: *tools_base
     environment:
       NETWORK_NODE: 'edgeware'
-    networks:
-      - app_net
   canary-tools:
-    restart: always
-    image: scan/codec_grpc
+    <<: *tools_base
     environment:
       NETWORK_NODE: 'canary'
-    networks:
-      - app_net
+  cert-tools:
+    <<: *tools_base
+    environment:
+      NETWORK_NODE: 'cert'
 networks:
   app_net:
     external: true

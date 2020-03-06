@@ -6,6 +6,9 @@ def load_type_registry(name):
     module_path = os.path.dirname(__file__)
     path = os.path.join(module_path, '{}.json'.format(name))
 
+    if os.path.exists(os.path.abspath(path)) is False:
+        return
+
     with open(os.path.abspath(path), 'r') as fp:
         data = fp.read()
 

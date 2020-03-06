@@ -55,6 +55,9 @@ class RuntimeConfiguration(metaclass=Singleton):
             return self.type_registry.get('default', {}).get(type_string.lower(), None)
 
     def update_type_registry(self, type_registry):
+        if type_registry is None:
+            return
+
         from pkg.scalecodec.types import Enum, Struct, Set, Vec
 
         for spec_version_id, type_mapping in type_registry.items():
