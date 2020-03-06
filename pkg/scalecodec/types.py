@@ -1051,7 +1051,7 @@ class Set(ScaleType):
         super().__init__(data, **kwargs)
 
     def process(self):
-        self.set_value = self.process_type('u64').value
+        self.set_value = self.process_type('u8').value
         result = []
         if self.set_value > 0:
 
