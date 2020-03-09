@@ -909,17 +909,6 @@ class PrefabWasmModule(Struct):
     )
 
 
-class Heartbeat(Struct):
-    type_string = 'Heartbeat<BlockNumber, AuthorityId>'
-
-    type_mapping = (
-        ('blockNumber', 'BlockNumber'),
-        ('networkState', 'OpaqueNetworkState'),
-        ('sessionIndex', 'SessionIndex'),
-        ('authorityId', 'AuthorityId'),
-    )
-
-
 class OpaqueNetworkState(Struct):
     type_mapping = (
         ('peerId', 'OpaquePeerId'),

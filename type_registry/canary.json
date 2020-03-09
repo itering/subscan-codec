@@ -435,6 +435,27 @@
           "Null"
         ]
       ]
+    },
+    "Heartbeat": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "blockNumber",
+          "BlockNumber"
+        ],
+        [
+          "networkState",
+          "OpaqueNetworkState"
+        ],
+        [
+          "sessionIndex",
+          "SessionIndex"
+        ],
+        [
+          "authority_index",
+          "U32"
+        ]
+      ]
     }
   }
 }
