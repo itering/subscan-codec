@@ -122,6 +122,24 @@
         ["module", "Option<u8>"],
         ["error", "u8"]
       ]
+    },
+    "BalanceLock<Balance, BlockNumber>": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "id",
+          "LockIdentifier"
+        ],
+        [
+
+          "amount",
+          "Balance"
+        ],
+        [
+          "reasons",
+          "Reasons"
+        ]
+      ]
     }
   }
 }
