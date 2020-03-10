@@ -839,6 +839,24 @@
           "Vec<Bytes>"
         ]
       ]
+    },
+    "RefCount": "u8",
+    "AccountInfo<Index, AccountData>": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "nonce",
+          "Index"
+        ],
+        [
+          "refcount",
+          "RefCount"
+        ],
+        [
+          "data",
+          "AccountData"
+        ]
+      ]
     }
   }
 }

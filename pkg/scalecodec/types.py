@@ -1782,3 +1782,11 @@ class Call(ScaleType):
             'call_module': self.call_module.name,
             'call_args': self.call_args
         }
+
+
+class AccountIdAddress(Address):
+
+    def process(self):
+        self.account_id = self.process_type('AccountId').value.replace('0x', '')
+        self.account_length = 'ff'
+        return self.account_id
