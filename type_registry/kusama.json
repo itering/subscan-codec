@@ -117,7 +117,6 @@
         ]
       ]
     },
-    "Address": "AccountIdAddress",
     "BalanceLock<Balance, BlockNumber>": {
       "type": "struct",
       "type_mapping": [
@@ -135,5 +134,8 @@
         ]
       ]
     }
+  },
+  "1050-?": {
+    "Address": "AccountIdAddress"
   }
 }

@@ -32,7 +32,7 @@ class ExtrinsicsDecoder(ScaleDecoder):
         ('call_index', '(u8,u8)'),
     )
 
-    def __init__(self, data, sub_type=None, metadata: MetadataDecoder = None):
+    def __init__(self, data, sub_type=None, metadata: MetadataDecoder = None, spec_version_id='default'):
 
         assert (type(metadata) == MetadataDecoder)
 
@@ -53,6 +53,7 @@ class ExtrinsicsDecoder(ScaleDecoder):
         self.call_args = None
         self.params_raw = None
         self.params = []
+        self.spec_version_id = spec_version_id
         super().__init__(data, sub_type)
 
     def generate_hash(self):
@@ -137,7 +138,7 @@ class ExtrinsicsDecoder(ScaleDecoder):
         elif self.version_info == '04' or self.version_info == '84':
 
             if self.contains_transaction:
-                self.address = self.process_type('Address')
+                self.address = self.process_type('Address', spec_version_id=self.spec_version_id)
 
                 self.signature_version = self.process_type('U8')
 
@@ -311,7 +312,6 @@ class AuthoritiesChange(Vec):
     type_string = 'Vec<AccountId>'
 
     def __init__(self, data, **kwargs):
-
         super().__init__(data, sub_type='AccountId', **kwargs)
 
 

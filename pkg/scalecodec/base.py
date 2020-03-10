@@ -33,7 +33,7 @@ class Singleton(type):
 
 class RuntimeConfiguration(metaclass=Singleton):
     type_registry = {}
-    active_spec_version_id = 'default'
+    spec_version_list = []
 
     @classmethod
     def all_subclasses(cls, class_):
@@ -46,7 +46,28 @@ class RuntimeConfiguration(metaclass=Singleton):
         self.type_registry['default'].update({cls.__name__.lower(): cls for cls in self.all_subclasses(ScaleDecoder)})
 
     def get_decoder_class(self, type_string, spec_version_id='default'):
-        # TODO move ScaleDecoder.get_decoder_class logic to here
+
+        # range check
+        if spec_version_id != "default":
+            for spec_version in self.spec_version_list:
+                version_range = spec_version.split("-")
+                if len(version_range) == 2:
+                    if version_range[1] == "?":
+                        if int(spec_version_id) >= int(version_range[0]):
+                            spec_version_id = spec_version
+                            break
+                    else:
+                        if int(version_range[0]) <= int(spec_version_id) <= int(version_range[1]):
+                            spec_version_id = spec_version
+                            break
+        decoder_class = self.type_registry.get(str(spec_version_id), {}).get(type_string.lower(), None)
+
+        if decoder_class:
+            return decoder_class
+        else:
+            return self.type_registry.get('default', {}).get(type_string.lower(), None)
+
+    def reg_decoder_class(self, type_string, spec_version_id='default'):
         decoder_class = self.type_registry.get(str(spec_version_id), {}).get(type_string.lower(), None)
 
         if decoder_class:
@@ -63,6 +84,7 @@ class RuntimeConfiguration(metaclass=Singleton):
         for spec_version_id, type_mapping in type_registry.items():
 
             if spec_version_id not in self.type_registry:
+                self.spec_version_list.append(spec_version_id)
                 self.type_registry[spec_version_id] = {}
 
             for type_string, decoder_class_data in type_mapping.items():
@@ -89,7 +111,7 @@ class RuntimeConfiguration(metaclass=Singleton):
                             decoder_class_data['type'])
                         )
                 else:
-                    decoder_class = self.get_decoder_class(decoder_class_data, spec_version_id)
+                    decoder_class = self.reg_decoder_class(decoder_class_data, spec_version_id)
 
                 if decoder_class is None:
                     if decoder_class_data[-1:] == '>':
@@ -104,7 +126,7 @@ class RuntimeConfiguration(metaclass=Singleton):
 
                 if decoder_class is None:
                     if decoder_class_data != '()' and decoder_class_data[0] == '(' and decoder_class_data[-1] == ')':
-                        decoder_class = self.get_decoder_class("struct", spec_version_id)
+                        decoder_class = self.reg_decoder_class("struct", spec_version_id)
                         decoder_class.type_string = decoder_class_data
                         decoder_class.build_type_mapping()
 
@@ -334,7 +356,7 @@ class ScaleDecoder(ABC):
 # TODO move type_string and sub_type behaviour to this sub class
 class ScaleType(ScaleDecoder, ABC):
 
-    def __init__(self, data=None, sub_type=None, metadata=None, source_name=None):
+    def __init__(self, data=None, sub_type=None, metadata=None, source_name=None, spec_version_id="default"):
         self.metadata = metadata
         if not data:
             data = ScaleBytes(bytearray())
