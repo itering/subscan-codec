@@ -34,6 +34,7 @@ class Singleton(type):
 class RuntimeConfiguration(metaclass=Singleton):
     type_registry = {}
     spec_version_list = []
+    active_spec_version_id = None
 
     @classmethod
     def all_subclasses(cls, class_):
@@ -85,7 +86,8 @@ class RuntimeConfiguration(metaclass=Singleton):
 
             if spec_version_id not in self.type_registry:
                 self.spec_version_list.append(spec_version_id)
-                self.type_registry[spec_version_id] = {}
+                self.type_registry[spec_version_id] = type_mapping
+                continue
 
             for type_string, decoder_class_data in type_mapping.items():
 
@@ -138,6 +140,22 @@ class RuntimeConfiguration(metaclass=Singleton):
     def override_type_registry(self, type_string, decoder_class, spec_version_id='default'):
         self.type_registry[spec_version_id][type_string.lower()] = decoder_class
 
+    def set_active_spec_version_id(self, spec_version_id):
+
+        if spec_version_id != self.active_spec_version_id:
+
+            self.active_spec_version_id = spec_version_id
+
+            # Updated type registry with versioned types
+            for spec_version in self.spec_version_list:
+                version_range = spec_version.split("-")
+                if len(version_range) == 2:
+                    if version_range[1] == "?":
+                        if int(spec_version_id) >= int(version_range[0]):
+                            self.update_type_registry({"default": self.type_registry[spec_version]})
+                    else:
+                        if int(version_range[0]) <= int(spec_version_id) <= int(version_range[1]):
+                            self.update_type_registry({"default": self.type_registry[spec_version]})
 
 class ScaleBytes:
 

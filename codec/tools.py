@@ -6,6 +6,7 @@ from pkg.scalecodec.block import ExtrinsicsDecoder, EventsDecoder, LogDigest
 from codec import MetadataInstant
 from logger.conf import info
 from pb import rpc_pb2, rpc_pb2_grpc
+from pkg.scalecodec.base import RuntimeConfiguration
 
 
 class InvalidMetadataSpec(Exception):
@@ -53,8 +54,9 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
             t = MetadataRegistry.get_class_decoder(spec_ver)
         result = []
         error = False
+        RuntimeConfiguration().set_active_spec_version_id(spec_ver)
         for idx, extrinsic_data in enumerate(msg):
-            extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=t, spec_version_id=spec_ver)
+            extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=t)
             try:
                 result.append(extrinsic_decoder.decode(False))
             except:
@@ -70,6 +72,7 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         else:
             t = MetadataRegistry.get_class_decoder(spec_ver)
         event = request.message
+        RuntimeConfiguration().set_active_spec_version_id(spec_ver)
         events_decoder = EventsDecoder(data=ScaleBytes(event), metadata=t)
         result = []
         error = False
@@ -93,6 +96,7 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         msg = request.message
         spec_ver = request.metadataVersion
         decoder_type = request.decoderType
+        RuntimeConfiguration().set_active_spec_version_id(spec_ver)
         if MetadataRegistry().has_reg(spec_ver) is False:
             cl = MetadataRegistry().registry.get(sorted(MetadataRegistry().registry.keys())[-1], None)
             t = cl.Decoder
