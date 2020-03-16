@@ -54,7 +54,7 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
         result = []
         error = False
         for idx, extrinsic_data in enumerate(msg):
-            extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=t)
+            extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=t, spec_version_id=spec_ver)
             try:
                 result.append(extrinsic_decoder.decode(False))
             except:
