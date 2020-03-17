@@ -17,10 +17,6 @@ services:
     <<: *tools_base
     environment:
       NETWORK_NODE: 'canary'
-  cert-tools:
-    <<: *tools_base
-    environment:
-      NETWORK_NODE: 'cert'
 networks:
   app_net:
     external: true
