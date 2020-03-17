@@ -1,7 +1,7 @@
 version: "2"
 
 services:
-  kusama-tools: &tools_base
+  cert-tools:
     restart: always
     image: scan/codec_grpc
     build: .
@@ -9,18 +9,7 @@ services:
       NETWORK_NODE: 'kusama'
     networks:
       - app_net
-  edgeware-tools:
-    <<: *tools_base
-    environment:
-      NETWORK_NODE: 'edgeware'
-  canary-tools:
-    <<: *tools_base
-    environment:
-      NETWORK_NODE: 'canary'
-  cert-tools:
-    <<: *tools_base
-    environment:
-      NETWORK_NODE: 'cert'
+
 networks:
   app_net:
     external: true
