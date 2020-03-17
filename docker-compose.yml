@@ -6,7 +6,7 @@ services:
     image: scan/codec_grpc
     build: .
     environment:
-      NETWORK_NODE: 'kusama'
+      NETWORK_NODE: 'cert'
     networks:
       - app_net
 
