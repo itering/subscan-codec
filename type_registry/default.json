@@ -857,6 +857,19 @@
           "AccountData"
         ]
       ]
+    },
+    "ActiveEraInfo<MomentOf>": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "index",
+          "EraIndex"
+        ],
+        [
+          "start",
+          "MomentOf"
+        ]
+      ]
     }
   }
 }
