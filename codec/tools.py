@@ -84,8 +84,10 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
 
     def DecodeLog(self, request, context):
         logs = json.loads(request.message)
-        info('DecodeLog', logs[0])
         result = []
+        if len(logs) == 0:
+            return rpc_pb2.ExtrinsicReply(message=json.dumps(result))
+        info('DecodeLog', logs[0])
         for idx, log in enumerate(logs):
             log_decoder = LogDigest(data=ScaleBytes(log))
             result.append(log_decoder.decode(False))

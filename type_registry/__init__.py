@@ -11,8 +11,10 @@ def load_type_registry(name):
 
     with open(os.path.abspath(path), 'r') as fp:
         data = fp.read()
-
-    return json.loads(data)
+    data = json.loads(data)
+    if "default" not in data:
+        data = {'default': convert_type_registry(name)}
+    return data
 
 
 def convert_type_registry(name):

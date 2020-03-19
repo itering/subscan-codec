@@ -132,6 +132,8 @@ class RuntimeConfiguration(metaclass=Singleton):
                         decoder_class.type_string = decoder_class_data
                         decoder_class.build_type_mapping()
 
+                if decoder_class is None:
+                    print("type_string ", type_string, "not reg")
                 self.type_registry[spec_version_id][type_string.lower()] = decoder_class
 
     def set_type_registry(self, spec_version_id, type_mapping):
@@ -156,6 +158,7 @@ class RuntimeConfiguration(metaclass=Singleton):
                     else:
                         if int(version_range[0]) <= int(spec_version_id) <= int(version_range[1]):
                             self.update_type_registry({"default": self.type_registry[spec_version]})
+
 
 class ScaleBytes:
 

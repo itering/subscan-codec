@@ -21,7 +21,7 @@ def serve():
 
 def type_registry():
     RuntimeConfiguration().update_type_registry(load_type_registry("default"))
-    RuntimeConfiguration().update_type_registry(load_type_registry(os.getenv("NETWORK_NODE", "icefrog")))
+    RuntimeConfiguration().update_type_registry(load_type_registry(os.getenv("NETWORK_NODE", "canary")))
     MetadataRegistry()
 
 
