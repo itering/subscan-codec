@@ -7,7 +7,6 @@
   "StakingBalanceT": "StakingBalance",
   "StakingBalance": {
     "_enum": {
-      "All": null,
       "RingBalance": "Balance",
       "KtonBalance": "Balance"
     }
@@ -53,6 +52,7 @@
     "kton_balance": "Compact<Balance>",
     "power": "Power"
   },
+  "FullIdentification": "Exposure",
   "ValidatorReward": {
     "who": "AccountId",
     "amount": "Compact<Balance>",
