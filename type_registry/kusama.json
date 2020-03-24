@@ -133,6 +133,19 @@
           "Reasons"
         ]
       ]
+    },
+    "ReferendumInfo<BlockNumber, Hash>": {
+      "type": "enum",
+      "type_mapping": [
+        [
+          "Ongoing",
+          "ReferendumStatus"
+        ],
+        [
+          "Finished",
+          "ReferendumInfoFinished"
+        ]
+      ]
     }
   },
   "1050-?": {
