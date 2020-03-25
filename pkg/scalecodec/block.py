@@ -366,5 +366,4 @@ class LogDigest(Enum):
             log_type = "bytes"
 
         self.log_type = self.process_type(log_type)
-        print(self.log_type)
         return {'index': self.value_list[self.index], 'type': self.log_type.type_string, 'value': self.log_type.value}
