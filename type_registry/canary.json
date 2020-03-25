@@ -179,7 +179,7 @@
       "Unknown9": "Bytes",
       "Unknown10": "Bytes",
       "Unknown11": "Bytes",
-      "Unknown12": "Bytes",
+      "Unknown12": "Hash",
       "Unknown13": "Bytes",
       "Unknown14": "Bytes",
       "Unknown15": "Bytes",
@@ -187,5 +187,6 @@
       "Unknown17": "Bytes",
       "MerkleMountainRangeRoot": "Hash"
     }
-  }
+  },
+  "MerkleMountainRangeRoot": "Hash"
 }

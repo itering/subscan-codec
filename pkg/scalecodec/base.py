@@ -325,6 +325,7 @@ class ScaleDecoder(ABC):
     # TODO rename to decode_type (confusing when encoding is introduced)
     def process_type(self, type_string, **kwargs):
         obj = self.get_decoder_class(type_string, self.data, **kwargs)
+        obj.type_string = type_string
         obj.decode(check_remaining=False)
         if self.debug:
             print('=======================\nClass:\t{}\nType:\t{}\nValue:\t{}\nRaw:\t{}\n\nOffset:\t{} / {}\n'.format(

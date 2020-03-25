@@ -348,7 +348,9 @@ class PreRuntime(Struct):
 
 
 class LogDigest(Enum):
-    value_list = ['Other', 'AuthoritiesChange', 'ChangesTrieRoot', 'SealV0', 'Consensus', 'Seal', 'PreRuntime']
+    value_list = ['Other', 'AuthoritiesChange', 'ChangesTrieRoot', 'SealV0', 'Consensus', 'Seal', 'PreRuntime',
+                  'Unknown7', 'Unknown8', 'Unknown9', 'Unknown10', 'Unknown11', 'Unknown12', 'Unknown13',
+                  'Unknown14', 'Unknown15', 'Unknown16', 'Unknown17', 'MerkleMountainRangeRoot']
 
     def __init__(self, data, **kwargs):
         self.log_type = None
@@ -356,7 +358,13 @@ class LogDigest(Enum):
         super().__init__(data, **kwargs)
 
     def process(self):
-        self.index = int(self.get_next_bytes(1).hex())
+        self.index = int(self.get_next_bytes(1).hex(), 16)
         self.index_value = self.value_list[self.index]
-        self.log_type = self.process_type(self.value_list[self.index])
+        log_type = self.value_list[self.index]
+
+        if self.value_list[self.index].startswith("Unknown"):
+            log_type = "bytes"
+
+        self.log_type = self.process_type(log_type)
+        print(self.log_type)
         return {'index': self.value_list[self.index], 'type': self.log_type.type_string, 'value': self.log_type.value}
