@@ -67,7 +67,7 @@
     "k": "Balance"
   },
   "RKT": "RK",
-  "BalanceLock": {
+  "BalanceLock<Balance, BlockNumber>": {
     "id": "LockIdentifier",
     "lock_for": "LockFor",
     "lock_reasons": "LockReasons"
