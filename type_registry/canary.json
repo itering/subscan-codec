@@ -190,5 +190,8 @@
       "Unknown17": "Bytes",
       "MerkleMountainRangeRoot": "Hash"
     }
+  },
+  "ValidatorPrefs": {
+    "commission": "Compact<Balance>"
   }
 }
