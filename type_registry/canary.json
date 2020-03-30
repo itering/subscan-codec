@@ -11,7 +11,6 @@
       "KtonBalance": "Balance"
     }
   },
-  "StakingLedgerT": "StakingLedger",
   "StakingLedger": {
     "stash": "AccountId",
     "active_ring": "Compact<Balance>",
@@ -24,6 +23,7 @@
     "active": "Compact<Balance>",
     "unlocking": "Vec<UnlockChunk>"
   },
+  "StakingLedgerT": "StakingLedger",
   "TimeDepositItem": {
     "value": "Compact<Balance>",
     "start_time": "Compact<Moment>",
