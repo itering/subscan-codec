@@ -1122,6 +1122,19 @@
           "VotingDelegating"
         ]
       ]
+    },
+    "Timepoint": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "height",
+          "BlockNumber"
+        ],
+        [
+          "index",
+          "u32"
+        ]
+      ]
     }
   }
 }

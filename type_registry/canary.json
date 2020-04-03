@@ -191,5 +191,9 @@
   },
   "ValidatorPrefs": {
     "commission": "Compact<Balance>"
+  },
+  "MerkleMountainRangeRootLog": {
+    "prefix": "[u8; 4]",
+    "mmr_root": "Hash"
   }
 }
