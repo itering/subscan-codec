@@ -114,6 +114,14 @@ class Option(ScaleType):
 
         return None
 
+    def encode(self, value):
+
+        if value is not None and self.sub_type:
+            sub_type_obj = self.get_decoder_class(self.sub_type)
+            return ScaleBytes('0x01') + sub_type_obj.encode(value)
+
+        return ScaleBytes('0x00')
+
 
 class Bytes(ScaleType):
     type_string = 'Vec<u8>'
@@ -1764,6 +1772,42 @@ class Call(ScaleType):
             'call_module': self.call_module.name,
             'call_args': self.call_args
         }
+
+    def encode(self, value):
+        # Check requirements
+        if 'call_index' in value:
+            self.call_index = value['call_index']
+
+        elif 'call_module' in value and 'call_function' in value:
+            # Look up call module from metadata
+            for call_index, (call_module, call_function) in self.metadata.call_index.items():
+
+                if call_module.name == value['call_module'] and call_function.name == value['call_function']:
+                    self.call_index = call_index
+                    self.call_module = call_module
+                    self.call_function = call_function
+                    break
+
+            if not self.call_index:
+                raise ValueError('Specified call module and function not found in metadata')
+
+        elif not self.call_module or not self.call_function:
+            raise ValueError('No call module and function specified')
+
+        data = ScaleBytes(bytearray.fromhex(self.call_index))
+
+        # Encode call params
+        if len(self.call_function.args) > 0:
+            for arg in self.call_function.args:
+                if arg.name not in value['call_args']:
+                    raise ValueError('Parameter \'{}\' not specified'.format(arg.name))
+                else:
+                    param_value = value['call_args'][arg.name]
+
+                    arg_obj = self.get_decoder_class(arg.type, metadata=self.metadata)
+                    data += arg_obj.encode(param_value)
+
+        return data
 
 
 class AccountIdAddress(Address):

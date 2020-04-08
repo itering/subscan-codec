@@ -195,5 +195,6 @@
   "MerkleMountainRangeRootLog": {
     "prefix": "[u8; 4]",
     "mmr_root": "Hash"
-  }
+  },
+  "Address": "AccountId"
 }

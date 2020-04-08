@@ -1135,6 +1135,27 @@
           "u32"
         ]
       ]
+    },
+    "Multisig": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "when",
+          "Timepoint"
+        ],
+        [
+          "deposit",
+          "Balance"
+        ],
+        [
+          "depositor",
+          "AccountId"
+        ],
+        [
+          "approvals",
+          "Vec<AccountId>"
+        ]
+      ]
     }
   }
 }

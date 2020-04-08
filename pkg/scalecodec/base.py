@@ -193,6 +193,19 @@ class ScaleBytes:
     def __str__(self):
         return "0x{}".format(self.data.hex())
 
+    def __add__(self, data):
+
+        if type(data) == ScaleBytes:
+            return ScaleBytes(self.data + data.data)
+
+        if type(data) == bytes:
+            data = bytearray(data)
+        elif type(data) == str and data[0:2] == '0x':
+            data = bytearray.fromhex(data[2:])
+
+        if type(data) == bytearray:
+            return ScaleBytes(self.data + data)
+
 
 class ScaleDecoder(ABC):
     type_string = None
