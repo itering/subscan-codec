@@ -185,5 +185,6 @@
     "prefix": "[u8; 4]",
     "mmr_root": "Hash"
   },
-  "Address": "AccountIdAddress"
+  "Address": "AccountIdAddress",
+  "Keys": "SessionKeysPolkadot"
 }
