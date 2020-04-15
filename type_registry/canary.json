@@ -11,18 +11,19 @@
       "Module": "DispatchErrorModule"
     }
   },
+  "TsInMs": "u64",
   "RingBalance": "Balance",
   "KtonBalance": "Balance",
   "MomentT": "Moment",
   "Power": "u32",
   "DepositId": "U256",
-  "StakingBalanceT": "StakingBalance",
   "StakingBalance": {
     "_enum": {
       "RingBalance": "Balance",
       "KtonBalance": "Balance"
     }
   },
+  "StakingBalanceT": "StakingBalance",
   "StakingLedger": {
     "stash": "AccountId",
     "active_ring": "Compact<Balance>",
@@ -56,13 +57,17 @@
     "own_kton_balance": "Compact<Balance>",
     "own_power": "Power",
     "total_power": "Power",
-    "others": "Vec<IndividualExposure>"
+    "others": "Vec<IndividualExposure>",
+    "total": "Compact<Balance>",
+    "own": "Compact<Balance>"
   },
+  "ExposureT": "Exposure",
   "IndividualExposure": {
     "who": "AccountId",
     "ring_balance": "Compact<Balance>",
     "kton_balance": "Compact<Balance>",
-    "power": "Power"
+    "power": "Power",
+    "value": "Compact<Balance>"
   },
   "FullIdentification": "Exposure",
   "ValidatorReward": {
@@ -82,7 +87,9 @@
   "BalanceLock<Balance, BlockNumber>": {
     "id": "LockIdentifier",
     "lock_for": "LockFor",
-    "lock_reasons": "LockReasons"
+    "lock_reasons": "LockReasons",
+    "amount": "Balance",
+    "reasons": "Reasons"
   },
   "LockFor": {
     "_enum": {
@@ -152,6 +159,12 @@
     "index": "u64",
     "proof": "Bytes",
     "header_hash": "H256"
+  },
+  "EthNetworkType": {
+    "_enum": {
+      "Mainnet": null,
+      "Ropsten": null
+    }
   },
   "RedeemFor": {
     "_enum": {

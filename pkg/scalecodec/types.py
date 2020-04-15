@@ -669,7 +669,11 @@ class Enum(ScaleType):
         super().__init__(data, **kwargs)
 
     def process(self):
-        self.index = int(self.get_next_bytes(1).hex(), 16)
+        p = self.get_next_bytes(1).hex()
+        if p == "":
+            self.index = 0
+        else:
+            self.index = int(p, 16)
 
         if self.type_mapping:
             try:
