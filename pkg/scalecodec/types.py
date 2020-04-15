@@ -29,9 +29,10 @@ class Compact(ScaleType):
 
     def process_compact_bytes(self):
         compact_byte = self.get_next_bytes(1)
-
-        byte_mod = compact_byte[0] % 4
-
+        if len(compact_byte) == 0:
+            byte_mod = 0
+        else:
+            byte_mod = compact_byte[0] % 4
         if byte_mod == 0:
             self.compact_length = 1
         elif byte_mod == 1:
@@ -341,8 +342,9 @@ class Struct(ScaleType):
 
         result = {}
         for key, data_type in self.type_mapping:
+            print(key)
             result[key] = self.process_type(data_type, metadata=self.metadata).value
-
+            print(result[key])
         return result
 
 
