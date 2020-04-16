@@ -19,6 +19,7 @@ service Tools {
 message ExtrinsicRequest {
     string message = 1;
     int32 metadataVersion = 2;
+    string blockHash = 3;
 }
 
 message ExtrinsicReply {
@@ -29,6 +30,7 @@ message ExtrinsicReply {
 message EventRequest {
     string message = 1;
     int32 metadataVersion = 2;
+    string blockHash = 3;
 }
 
 message EventReply {

@@ -5,8 +5,9 @@ from pkg.scalecodec.base import ScaleDecoder, Singleton
 from pkg.scalecodec.block import ExtrinsicsDecoder, EventsDecoder, LogDigest
 from codec import MetadataInstant
 from logger.conf import info
-from pb import rpc_pb2, rpc_pb2_grpc
+from pb import codec_pb2, codec_pb2_grpc
 from pkg.scalecodec.base import RuntimeConfiguration
+from utiles import websocket
 
 
 class InvalidMetadataSpec(Exception):
@@ -41,36 +42,42 @@ class MetadataRegistry(metaclass=Singleton):
             MetadataRegistry().registry["%s%s" % (MetadataRegistry.network, spec)] = MetadataInstant(metadata)
 
 
-class Tools(rpc_pb2_grpc.ToolsServicer):
+class Tools(codec_pb2_grpc.ToolsServicer):
 
+    # block Extrinsic decode
     def DecodeExtrinsic(self, request, context):
         info("DecodeExtrinsic", (request.message, str(request.metadataVersion)))
+
         spec_ver = request.metadataVersion
         msg = json.loads(request.message)
+
         if MetadataRegistry().has_reg(spec_ver) is False:
-            cl = MetadataRegistry().registry.get(sorted(MetadataRegistry().registry.keys())[-1], None)
-            t = cl.Decoder
+            t = self.latest_decoder(spec_ver, request.blockHash)
         else:
             t = MetadataRegistry.get_class_decoder(spec_ver)
+
         result = []
         error = False
         RuntimeConfiguration().set_active_spec_version_id(spec_ver)
         for idx, extrinsic_data in enumerate(msg):
             extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=t)
-            try:
-                result.append(extrinsic_decoder.decode(False))
-            except:
-                error = True
-        return rpc_pb2.ExtrinsicReply(message=json.dumps(result), error=error)
 
+            result.append(extrinsic_decoder.decode(False))
+
+            error = True
+        return codec_pb2.ExtrinsicReply(message=json.dumps(result), error=error)
+
+    # block event decode
     def DecodeEvent(self, request, context):
         info('DecodeEvent', (request.message, str(request.metadataVersion)))
+
         spec_ver = request.metadataVersion
+
         if MetadataRegistry().has_reg(spec_ver) is False:
-            cl = MetadataRegistry().registry.get(sorted(MetadataRegistry().registry.keys())[-1], None)
-            t = cl.Decoder
+            t = self.latest_decoder(spec_ver, request.blockHash)
         else:
             t = MetadataRegistry.get_class_decoder(spec_ver)
+
         event = request.message
         RuntimeConfiguration().set_active_spec_version_id(spec_ver)
         events_decoder = EventsDecoder(data=ScaleBytes(event), metadata=t)
@@ -80,37 +87,53 @@ class Tools(rpc_pb2_grpc.ToolsServicer):
             result = events_decoder.decode(False)
         except:
             error = True
-        return rpc_pb2.EventReply(message=json.dumps(result), error=error)
+        return codec_pb2.EventReply(message=json.dumps(result), error=error)
 
     def DecodeLog(self, request, context):
         logs = json.loads(request.message)
+
         result = []
         if len(logs) == 0:
-            return rpc_pb2.ExtrinsicReply(message=json.dumps(result))
+            return codec_pb2.ExtrinsicReply(message=json.dumps(result))
         info('DecodeLog', logs[0])
         for idx, log in enumerate(logs):
             log_decoder = LogDigest(data=ScaleBytes(log))
             result.append(log_decoder.decode(False))
-        return rpc_pb2.ExtrinsicReply(message=json.dumps(result))
+        return codec_pb2.ExtrinsicReply(message=json.dumps(result))
 
     def DecodeStorage(self, request, context):
         info('DecodeStorage', (request.message, request.decoderType))
+
         msg = request.message
         spec_ver = request.metadataVersion
         decoder_type = request.decoderType
+
         RuntimeConfiguration().set_active_spec_version_id(spec_ver)
+
         if MetadataRegistry().has_reg(spec_ver) is False:
-            cl = MetadataRegistry().registry.get(sorted(MetadataRegistry().registry.keys())[-1], None)
-            t = cl.Decoder
+            t = self.latest_decoder(spec_ver)
         else:
             t = MetadataRegistry.get_class_decoder(spec_ver)
         obj = ScaleDecoder.get_decoder_class(decoder_type, ScaleBytes(msg), metadata=t)
         c = obj.decode(False)
-        return rpc_pb2.ExtrinsicReply(message=json.dumps(c))
+        return codec_pb2.ExtrinsicReply(message=json.dumps(c))
 
     def RegMetadata(self, request, context):
         metadata = request.message
         spec_ver = str(request.metadataVersion)
         info('RegMetadata', (metadata, spec_ver))
+
         MetadataRegistry().reg_new_instant(metadata, spec_ver)
-        return rpc_pb2.ExtrinsicReply(message="true")
+        return codec_pb2.ExtrinsicReply(message="true")
+
+    @classmethod
+    def latest_decoder(cls, spec_ver, block_hash=None):
+        if block_hash is not None and os.getenv("NETWORK_ENDPOINT"):
+            raw = websocket.get_current_metadata(os.getenv("NETWORK_ENDPOINT"), block_hash)
+            if raw is not None:
+                MetadataRegistry().reg_new_instant(raw, spec_ver)
+                return MetadataRegistry.get_class_decoder(spec_ver)
+
+        cl = MetadataRegistry().registry.get(sorted(MetadataRegistry().registry.keys())[-1], None)
+        t = cl.Decoder
+        return t

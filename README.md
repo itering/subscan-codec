@@ -18,4 +18,4 @@
     
 ## proto compile
 
-    python -m grpc_tools.protoc -I . --python_out=pb --grpc_python_out=pb rpc.proto
+    python -m grpc_tools.protoc -I . --python_out=pb --grpc_python_out=pb codec.proto

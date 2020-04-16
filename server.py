@@ -4,7 +4,7 @@ import grpc
 from concurrent import futures
 from pkg.scalecodec.base import RuntimeConfiguration
 from codec.tools import Tools
-from pb import rpc_pb2_grpc
+from pb import codec_pb2_grpc
 from type_registry import load_type_registry
 from logger.conf import log_config, LOGGER
 from codec.tools import MetadataRegistry
@@ -12,7 +12,7 @@ from codec.tools import MetadataRegistry
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10), compression=grpc.Compression.Gzip)
-    rpc_pb2_grpc.add_ToolsServicer_to_server(Tools(), server)
+    codec_pb2_grpc.add_ToolsServicer_to_server(Tools(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     LOGGER.info("SubScan Tools server start :50051")
