@@ -1,12 +1,12 @@
 ## SubScan Codec GRPC tool
 ---
-SubScan codec grpc tool is written in Python.It reference from https://github.com/polkascan/py-scale-codec, is lightweight, efficient grpc server.
-It is not restricted by any language,you can find grpc example in https://grpc.io/.
+SubScan codec grpc tool is written in Python. It reference from https://github.com/polkascan/py-scale-codec, is lightweight, efficient grpc server. 
+It is not restricted by any language, you can find grpc example in https://grpc.io/.
 
 
 ### Feature
 
-1. Decode substrate metadata,Extrinsic,Event,chain storage
+1. Decode substrate metadata, Extrinsic, Event, chain storage
 2. Reg custom type
 
 
