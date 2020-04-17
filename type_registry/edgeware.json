@@ -116,11 +116,38 @@
       ]
     },
     "Balance2": "Balance",
-    "DispatchError": {
+    "DispatchErrorModule": {
       "type": "struct",
       "type_mapping": [
-        ["module", "Option<u8>"],
-        ["error", "u8"]
+        [
+          "index",
+          "u8"
+        ],
+        [
+          "error",
+          "u8"
+        ]
+      ]
+    },
+    "DispatchError": {
+      "type": "enum",
+      "type_mapping": [
+        [
+          "Other",
+          "Null"
+        ],
+        [
+          "CannotLookup",
+          "Null"
+        ],
+        [
+          "BadOrigin",
+          "Null"
+        ],
+        [
+          "Module",
+          "DispatchErrorModule"
+        ]
       ]
     },
     "BalanceLock<Balance, BlockNumber>": {
