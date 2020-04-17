@@ -61,10 +61,10 @@ class Tools(codec_pb2_grpc.ToolsServicer):
         RuntimeConfiguration().set_active_spec_version_id(spec_ver)
         for idx, extrinsic_data in enumerate(msg):
             extrinsic_decoder = ExtrinsicsDecoder(data=ScaleBytes(extrinsic_data), metadata=t)
-
-            result.append(extrinsic_decoder.decode(False))
-
-            error = True
+            try:
+                result.append(extrinsic_decoder.decode(False))
+            except:
+                error = True
         return codec_pb2.ExtrinsicReply(message=json.dumps(result), error=error)
 
     # block event decode
