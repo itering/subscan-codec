@@ -32,15 +32,13 @@
     "deposit_items": "Vec<TimeDepositItem>",
     "ring_staking_lock": "StakingLock",
     "kton_staking_lock": "StakingLock",
-    "total": "Compact<Balance>",
-    "active": "Compact<Balance>",
-    "unlocking": "Vec<UnlockChunk>"
+    "last_reward": "Option<EraIndex>"
   },
   "StakingLedgerT": "StakingLedger",
   "TimeDepositItem": {
     "value": "Compact<Balance>",
-    "start_time": "Compact<Moment>",
-    "expire_time": "Compact<Moment>"
+    "start_time": "Compact<TsInMs>",
+    "expire_time": "Compact<TsInMs>"
   },
   "RewardDestination": {
     "_enum": {
@@ -50,24 +48,21 @@
     }
   },
   "Staked": {
-    "promise_month": "Moment"
+    "promise_month": "u8"
   },
   "Exposure": {
     "own_ring_balance": "Compact<Balance>",
     "own_kton_balance": "Compact<Balance>",
     "own_power": "Power",
     "total_power": "Power",
-    "others": "Vec<IndividualExposure>",
-    "total": "Compact<Balance>",
-    "own": "Compact<Balance>"
+    "others": "Vec<IndividualExposure>"
   },
   "ExposureT": "Exposure",
   "IndividualExposure": {
     "who": "AccountId",
     "ring_balance": "Compact<Balance>",
     "kton_balance": "Compact<Balance>",
-    "power": "Power",
-    "value": "Compact<Balance>"
+    "power": "Power"
   },
   "FullIdentification": "Exposure",
   "ValidatorReward": {
@@ -84,12 +79,11 @@
     "k": "Balance"
   },
   "RKT": "RK",
+  "BalanceInfo": null,
   "BalanceLock<Balance, BlockNumber>": {
     "id": "LockIdentifier",
     "lock_for": "LockFor",
-    "lock_reasons": "LockReasons",
-    "amount": "Balance",
-    "reasons": "Reasons"
+    "lock_reasons": "LockReasons"
   },
   "LockFor": {
     "_enum": {
@@ -119,13 +113,16 @@
     "free": "Balance",
     "reserved": "Balance",
     "free_kton": "Balance",
-    "reserved_kton": "Balance",
-    "misc_frozen": "Balance",
-    "fee_frozen": "Balance"
+    "reserved_kton": "Balance"
   },
   "EthBlockNumber": "u64",
   "EthAddress": "H160",
   "EthTransactionIndex": "(H256, u64)",
+  "EthHeaderBrief": {
+    "total_difficulty": "U256",
+    "parent_hash": "H256",
+    "number": "EthBlockNumber"
+  },
   "HeaderInfo": {
     "total_difficulty": "U256",
     "parent_hash": "H256",
