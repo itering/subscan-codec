@@ -43,8 +43,8 @@
   "RewardDestination": {
     "_enum": {
       "Staked": "Staked",
-      "Stash": null,
-      "Controller": null
+      "Stash": "null",
+      "Controller": "null"
     }
   },
   "Staked": {
@@ -79,7 +79,7 @@
     "k": "Balance"
   },
   "RKT": "RK",
-  "BalanceInfo": null,
+  "BalanceInfo": "null",
   "BalanceLock<Balance, BlockNumber>": {
     "id": "LockIdentifier",
     "lock_for": "LockFor",
@@ -196,5 +196,9 @@
     "mmr_root": "Hash"
   },
   "Address": "AccountIdAddress",
-  "Keys": "SessionKeysPolkadot"
+  "Keys": "SessionKeysPolkadot",
+  "DoubleNodeWithMerkleProof": {
+    "dag_nodes": "[H512; 2]",
+    "proof": "Vec<H128>"
+  }
 }

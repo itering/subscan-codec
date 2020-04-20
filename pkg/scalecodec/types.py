@@ -266,6 +266,12 @@ class I256(ScaleType):
         return int.from_bytes(self.get_next_bytes(32), byteorder='little', signed=True)
 
 
+class H128(ScaleType):
+
+    def process(self):
+        return '0x{}'.format(self.get_next_bytes(16).hex())
+
+
 class H256(ScaleType):
 
     def process(self):
@@ -276,6 +282,13 @@ class H512(ScaleType):
 
     def process(self):
         return '0x{}'.format(self.get_next_bytes(64).hex())
+
+
+class VecH512Length2(ScaleType):
+    type_string = '[H512; 2]'
+
+    def process(self):
+        return '0x{}'.format(self.get_next_bytes(128).hex())
 
 
 class VecU8Length32(ScaleType):
