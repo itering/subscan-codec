@@ -1156,6 +1156,20 @@
           "Vec<AccountId>"
         ]
       ]
+    },
+    "ModuleId": "LockIdentifier",
+    "RuntimeDbWeight": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "read",
+          "Weight"
+        ],
+        [
+          "write",
+          "Weight"
+        ]
+      ]
     }
   }
 }
