@@ -146,9 +146,20 @@
           "ReferendumInfoFinished"
         ]
       ]
+    },
+    "DispatchClass": {
+      "type": "enum",
+      "value_list": [
+        "Normal",
+        "Operational",
+        "Mandatory"
+      ]
     }
   },
   "1050-?": {
     "Address": "AccountIdAddress"
+  },
+  "1058-?": {
+    "Weight": "u64"
   }
 }

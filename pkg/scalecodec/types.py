@@ -355,9 +355,7 @@ class Struct(ScaleType):
 
         result = {}
         for key, data_type in self.type_mapping:
-            print(key)
             result[key] = self.process_type(data_type, metadata=self.metadata).value
-            print(result[key])
         return result
 
 
