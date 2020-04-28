@@ -1171,6 +1171,104 @@
         ]
       ]
     },
-    "CallHash": "H256"
+    "CallHash": "H256",
+    "ElectionCompute": {
+      "type": "enum",
+      "value_list": [
+        "OnChain",
+        "Signed",
+        "Authority"
+      ]
+    },
+    "ElectionResult": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "compute",
+          "ElectionCompute"
+        ],
+        [
+          "slotStake",
+          "Balance"
+        ],
+        [
+          "electedStashes",
+          "Vec<AccountId>"
+        ],
+        [
+          "exposures",
+          "Vec<(AccountId, Exposure)>"
+        ]
+      ]
+    },
+    "ElectionStatus": {
+      "type": "enum",
+      "type_mapping": [
+        [
+          "Close",
+          "Null"
+        ],
+        [
+          "Open",
+          "BlockNumber"
+        ]
+      ]
+    },
+    "Phase": {
+      "type": "enum",
+      "type_mapping": [
+        [
+          "ApplyExtrinsic",
+          "u32"
+        ],
+        [
+          "Finalization",
+          "Null"
+        ],
+        [
+          "Initialization",
+          "Null"
+        ]
+      ]
+    },
+    "PhragmenScore": "[u128; 3]",
+    "PreimageStatusAvailable": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "data",
+          "Bytes"
+        ],
+        [
+          "provider",
+          "AccountId"
+        ],
+        [
+          "deposit",
+          "Balance"
+        ],
+        [
+          "since",
+          "BlockNumber"
+        ],
+        [
+          "expiry",
+          "Option<BlockNumber>"
+        ]
+      ]
+    },
+    "PreimageStatus": {
+      "type": "enum",
+      "type_mapping": [
+        [
+          "Missing",
+          "BlockNumber"
+        ],
+        [
+          "Available",
+          "PreimageStatusAvailable"
+        ]
+      ]
+    }
   }
 }

@@ -342,6 +342,14 @@ class VecU8Length2(ScaleType):
             return value.hex()
 
 
+class VecU128Length3(ScaleType):
+    type_string = '[u128; 3]'
+
+    def process(self):
+        value = self.get_next_bytes(96)
+        return value.hex()
+
+
 class Struct(ScaleType):
 
     def __init__(self, data, type_mapping=None, **kwargs):
