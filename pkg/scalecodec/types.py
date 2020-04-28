@@ -346,7 +346,7 @@ class VecU128Length3(ScaleType):
     type_string = '[u128; 3]'
 
     def process(self):
-        value = self.get_next_bytes(96)
+        value = self.get_next_bytes(48)
         return value.hex()
 
 
