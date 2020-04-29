@@ -1401,6 +1401,106 @@
           "Vec<(NominatorIndex, [CompactScore; 15], ValidatorIndex)>"
         ]
       ]
+    },
+    "ReleasesBalances": {
+      "type": "enum",
+      "value_list": [
+        "V1_0_0",
+        "V2_0_0"
+      ]
+    },
+    "Releases": "ReleasesBalances",
+    "SlotRange": {
+      "type": "enum",
+      "value_list": [
+        "ZeroZero",
+        "ZeroOne",
+        "ZeroTwo",
+        "ZeroThree",
+        "OneOne",
+        "OneTwo",
+        "OneThree",
+        "TwoTwo",
+        "TwoThree",
+        "ThreeThree"
+      ]
+    },
+    "ValidityAttestation": {
+      "type": "enum",
+      "type_mapping": [
+        [
+          "None",
+          "Null"
+        ],
+        [
+          "Implicit",
+          "CollatorSignature"
+        ],
+        [
+          "Explicit",
+          "CollatorSignature"
+        ]
+      ]
+    },
+    "VestingInfo": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "locked",
+          "Balance"
+        ],
+        [
+          "perBlock",
+          "Balance"
+        ],
+        [
+          "startingBlock",
+          "BlockNumber"
+        ]
+      ]
+    },
+    "ProxyState": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "Open",
+          "AccountId"
+        ],
+        [
+          "Active",
+          "AccountId"
+        ]
+      ]
+    },
+    "IncomingParachainFixed": {
+      "type": "struct",
+      "type_mapping": [
+        [
+          "codeHash",
+          "Hash"
+        ],
+        [
+          "initialHeadData",
+          "Bytes"
+        ]
+      ]
+    },
+    "IncomingParachain": {
+      "type": "enum",
+      "type_mapping": [
+        [
+          "Unset",
+          "NewBidder"
+        ],
+        [
+          "Fixed",
+          "IncomingParachainFixed"
+        ],
+        [
+          "Deploy",
+          "IncomingParachainDeploy"
+        ]
+      ]
     }
   }
 }

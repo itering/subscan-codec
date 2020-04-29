@@ -74,12 +74,12 @@
       "type": "enum",
       "type_mapping": [
         [
-          "Error",
-          "DispatchError"
-        ],
-        [
           "Ok",
           "Null"
+        ],
+        [
+          "Error",
+          "DispatchError"
         ]
       ]
     },
