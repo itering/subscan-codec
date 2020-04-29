@@ -47,7 +47,6 @@ class RuntimeConfiguration(metaclass=Singleton):
         self.type_registry['default'].update({cls.__name__.lower(): cls for cls in self.all_subclasses(ScaleDecoder)})
 
     def get_decoder_class(self, type_string, spec_version_id='default'):
-
         # range check
         if spec_version_id != "default":
             for spec_version in self.spec_version_list:
@@ -62,10 +61,19 @@ class RuntimeConfiguration(metaclass=Singleton):
                             spec_version_id = spec_version
                             break
         decoder_class = self.type_registry.get(str(spec_version_id), {}).get(type_string.lower(), None)
-
         if decoder_class:
             return decoder_class
         else:
+            if type_string[0] == '[' and type_string[-1] == ']':
+
+                type_parts = type_string[1:-1].split(",")
+                if type_parts:
+                    decoder_class = type(type_string, (FixedLengthArray,), {
+                        'element_count': int(type_parts[1]),
+                        'sub': type_parts[0],
+                    })
+                    return decoder_class
+
             return self.type_registry.get('default', {}).get(type_string.lower(), None)
 
     def reg_decoder_class(self, type_string, spec_version_id='default'):
@@ -396,3 +404,22 @@ class ScaleType(ScaleDecoder, ABC):
         if not data:
             data = ScaleBytes(bytearray())
         super().__init__(data, sub_type)
+
+
+class FixedLengthArray(ScaleType):
+    element_count = 0
+    sub = ""
+
+    def __init__(self, data, **kwargs):
+        super().__init__(data, sub_type=self.sub, **kwargs)
+
+    def process(self):
+        result = []
+        if self.element_count:
+
+            for idx in range(self.element_count):
+                result.append(self.process_type(self.sub_type).value)
+        else:
+            self.get_next_u8()
+
+        return result
